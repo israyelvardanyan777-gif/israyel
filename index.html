@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CryiptoEarn</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #f0f0f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Navbar */
+  nav {
+    background: rgba(30, 30, 40, 0.85);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+  nav a {
+    color: #ddd;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+  }
+  nav a:hover, nav a.active {
+    background: #6c63ff;
+    color: #fff;
+    box-shadow: 0 0 8px #6c63ffaa;
+  }
+
+  /* Main container */
+  .container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0.1em;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  p.subtitle {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+  }
+
+  .address-box {
+    background: rgba(255,255,255,0.15);
+    padding: 25px 20px;
+    border-radius: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    user-select: all;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+    margin-bottom: 30px;
+    max-width: 400px;
+    word-break: break-all;
+  }
+
+  button.copy-btn {
+    background: #6c63ff;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px #6c63ffaa;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  button.copy-btn:hover {
+    background: #5848c2;
+    box-shadow: 0 6px 18px #5848c2cc;
+  }
+
+  .support {
+    margin-top: 50px;
+    font-size: 1rem;
+    color: #dcdcdc;
+  }
+  .support a {
+    color: #ffdd57;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .support a:hover {
+    text-decoration: underline;
+  }
+
+  /* Content sections hidden by default */
+  .section {
+    display: none;
+  }
+  .section.active {
+    display: block;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+    .address-box {
+      font-size: 1.1rem;
+      padding: 20px 15px;
+    }
+    button.copy-btn {
+      padding: 12px 28px;
+      font-size: 0.9rem;
+    }
+    nav {
+      gap: 15px;
+      padding: 10px 0;
+    }
+    nav a {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-link active" data-section="wallet">Wallet</a>
+  <a href="#" class="nav-link" data-section="profile">Profile</a>
+  <a href="#" class="nav-link" data-section="referral">Referral</a>
+  <a href="#" class="nav-link" data-section="menu">Menu</a>
+</nav>
+
+<div class="container">
+  <div id="wallet" class="section active">
+    <h1>Wallet</h1>
+    <p class="subtitle">Minimum deposit: <strong>$10</strong></p>
+    <div class="address-box" id="usdt-address">TJu2Dsrv4FA1cV4yUWTzbyFUqxX5hoHkec</div>
+    <button class="copy-btn" onclick="copyAddress()">Copy USDT Address</button>
+    <p class="support">
+      After sending, contact support:<br />
+      <a href="https://t.me/CryiptoEarnOficiall_support" target="_blank">@CryiptoEarnOficiall_support</a>
+    </p>
+  </div>
+
+  <div id="profile" class="section">
+    <h1>Profile</h1>
+    <p>This section will show your profile details soon.</p>
+  </div>
+
+  <div id="referral" class="section">
+    <h1>Referral</h1>
+    <p>You have <strong>0</strong> active referred friends.</p>
+    <p>Referral bonus tier: <strong>0%</strong></p>
+  </div>
+
+  <div id="menu" class="section">
+    <h1>Menu</h1>
+    <p>More options and information will be here.</p>
+  </div>
+</div>
+
+<script>
+  function copyAddress() {
+    const address = document.getElementById('usdt-address').textContent;
+    navigator.clipboard.writeText(address).then(() => {
+      alert('Address copied to clipboard!');
+    }).catch(() => {
+      alert('Copy failed, please copy manually.');
+    });
+  }
+
+  // Nav link click handler - show corresponding section
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = e.target.getAttribute('data-section');
+      // Remove active from all links
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      // Add active to clicked
+      e.target.classList.add('active');
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      // Show target section
+      document.getElementById(target).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
