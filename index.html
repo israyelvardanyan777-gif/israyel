@@ -168,156 +168,8 @@
     <p>You have <strong>0</strong> active referred friends.</p>
     <p>Referral bonus tier: <strong>0%</strong></p>
   </div>
- </style>
-</head>
-<body>
- <div class="container">
-  <const></const> userId = "123456";
-    <h2>Your Referral Bonuses</h2>
-    <div class="bonus-item" id="referralCount">Referred friends: 0</div>
-    <div class="bonus-item" id="totalBonus">Total bonus earned: $0</div>
-
-    <div class="bonus-item">
-      ✔ Earn $2 per referred friend<br />
-      ✔ Earn $3 after Instagram follow<br />
-      ✔ Earn $2 after Telegram channel join
-    </div>
-
-    <div class="links">
-      <a href="https://www.instagram.com/isahak__vardanyan/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://t.me/CryiptoEarnOficial" target="_blank" rel="noopener noreferrer">Telegram</a>
-    </div>
-  </div>
-
   <div id="menu" class="section">
-    <h1>Menu</h1>
-    <p>More options and information will be here.</p>
-  </div>
-</div>
-
-<script>
-  function copyAddress() {
-    const address = document.getElementById('usdt-address').textContent;
-    navigator.clipboard.writeText(address).then(() => {
-      alert('Address copied to clipboard!');
-    }).catch(() => {
-      alert('Copy failed, please copy manually.');
-    });
-  }
-
-  // Nav link click handler - show corresponding section
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = e.target.getAttribute('data-section');
-      // Remove active from all links
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      // Add active to clicked
-      e.target.classList.add('active');
-      // Hide all sections
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      // Show target section
-      document.getElementById(target).classList.add('active');
-    });
-  });
-</script>
-
-</body>
-</html>
-<script>
-  // Օրինակ օգտատեր ID-ն կարող ես ուղարկել URL կամ Telegram login-ից ստանալ
-  const userId = "123456";
-
-  fetch(`http://localhost:5000/api/referral/${userId}`)
-    .then(response => response.json())
-    .then(data => {
-      if(data.error) {
-        document.getElementById("referralCount").textContent = data.error;
-        document.getElementById("totalBonus").textContent = "";
-        return;
-      }
-      document.getElementById("referralCount").textContent = `Referred friends: ${data.referredFriends}`;
-      document.getElementById("totalBonus").textContent = `Total bonus earned: $${data.totalBonus}`;
-    })
-    .catch(err => {
-      document.getElementById("referralCount").textContent = "Failed to load data.";
-      console.error(err);
-    });
-</script>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Referral Bonuses</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #7b5fff, #b75fff);
-      color: #fff;
-      margin: 0;
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 380px;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 30px 25px;
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      text-align: center;
-      backdrop-filter: blur(8px);
-    }
-    h2 {
-      color: #ffd6ff;
-      margin-bottom: 22px;
-      font-weight: 700;
-      text-shadow: 0 2px 8px rgba(123, 95, 255, 0.7);
-    }
-    .bonus-item {
-      font-size: 18px;
-      margin: 14px 0;
-      line-height: 1.4;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    }
-    .links {
-      margin-top: 30px;
-    }
-    .links a {
-      display: inline-block;
-      margin: 0 14px;
-      padding: 12px 26px;
-      background-color: #9a66ff;
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(154,102,255,0.6);
-      transition: background-color 0.25s ease;
-    }
-    .links a:hover {
-      background-color: #7b5fff;
-    }
-
-  <script>
-    // Example referral data
-    const referredFriends = 5;
-    const instagramBonus = 3;
-    const telegramBonus = 2;
-    const perFriendBonus = 2;
-
-    const totalBonus = (referredFriends * perFriendBonus) + instagramBonus + telegramBonus;
-
-    document.getElementById("referralCount").textContent = `Referred friends: ${referredFriends}`;
-    document.getElementById("totalBonus").textContent = `Total bonus earned: $${totalBonus}`;
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="hy">
 <head>
     <meta charset="UTF-8">
@@ -460,3 +312,128 @@
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d3154ef226ddcf',t:'MTc1NDg2NjU1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
 
+
+</div>
+
+<script>
+  function copyAddress() {
+    const address = document.getElementById('usdt-address').textContent;
+    navigator.clipboard.writeText(address).then(() => {
+      alert('Address copied to clipboard!');
+    }).catch(() => {
+      alert('Copy failed, please copy manually.');
+    });
+  }
+
+  // Nav link click handler - show corresponding section
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = e.target.getAttribute('data-section');
+      // Remove active from all links
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      // Add active to clicked
+      e.target.classList.add('active');
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      // Show target section
+      document.getElementById(target).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
+<script>
+  // Օրինակ օգտատեր ID-ն կարող ես ուղարկել URL կամ Telegram login-ից ստանալ
+  const userId = "123456";
+
+  fetch(`http://localhost:5000/api/referral/${userId}`)
+    .then(response => response.json())
+    .then(data => {
+      if(data.error) {
+        document.getElementById("referralCount").textContent = data.error;
+        document.getElementById("totalBonus").textContent = "";
+        return;
+      }
+      document.getElementById("referralCount").textContent = `Referred friends: ${data.referredFriends}`;
+      document.getElementById("totalBonus").textContent = `Total bonus earned: $${data.totalBonus}`;
+    })
+    .catch(err => {
+      document.getElementById("referralCount").textContent = "Failed to load data.";
+      console.error(err);
+    });
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Referral Bonuses</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #7b5fff, #b75fff);
+      color: #fff;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 380px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 30px 25px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+    h2 {
+      color: #ffd6ff;
+      margin-bottom: 22px;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(123, 95, 255, 0.7);
+    }
+    .bonus-item {
+      font-size: 18px;
+      margin: 14px 0;
+      line-height: 1.4;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .links {
+      margin-top: 30px;
+    }
+    .links a {
+      display: inline-block;
+      margin: 0 14px;
+      padding: 12px 26px;
+      background-color: #9a66ff;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(154,102,255,0.6);
+      transition: background-color 0.25s ease;
+    }
+    .links a:hover {
+      background-color: #7b5fff;
+    }
+
+  <script>
+    // Example referral data
+    const referredFriends = 5;
+    const instagramBonus = 3;
+    const telegramBonus = 2;
+    const perFriendBonus = 2;
+
+    const totalBonus = (referredFriends * perFriendBonus) + instagramBonus + telegramBonus;
+
+    document.getElementById("referralCount").textContent = `Referred friends: ${referredFriends}`;
+    document.getElementById("totalBonus").textContent = `Total bonus earned: $${totalBonus}`;
+  </script>
+</body>
+</html>
