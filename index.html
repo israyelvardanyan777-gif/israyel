@@ -316,3 +316,81 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wallet Balance</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6fb;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .balance-card {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 320px;
+    width: 100%;
+  }
+  .balance-title {
+    font-size: 24px;
+    color: #444;
+    margin-bottom: 15px;
+  }
+  .balance-amount {
+    font-size: 48px;
+    font-weight: 700;
+    color: #3a47a3;
+    margin-bottom: 10px;
+  }
+  .balance-currency {
+    font-size: 18px;
+    color: #666;
+  }
+  .loading {
+    color: #999;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+  <div class="balance-card">
+    <div class="balance-title">Your Wallet Balance</div>
+    <div id="balanceAmount" class="balance-amount loading">Loading...</div>
+    <div class="balance-currency">USD</div>
+  </div>
+
+<script>
+  // Telegram Web Apps API
+  const tg = window.Telegram.WebApp;
+  const user = tg.initDataUnsafe?.user || {id: 0}; // safety fallback
+  
+  // Ֆեյք բալանս (իրականում սա պետք է գա API-ից)
+  const fakeBalance = 123.45; 
+
+  // Մի փոքր տող, որ ցույց է տալիս բալանսը
+  function showBalance(amount) {
+    const balEl = document.getElementById('balanceAmount');
+    balEl.classList.remove('loading');
+    balEl.textContent = amount.toFixed(2);
+  }
+
+  // Սովորականդ այս տեղում կանչիր API -ի fetch-ը
+  // Այսօր կցնենք ֆեյք բալանս
+  setTimeout(() => {
+    showBalance(fakeBalance);
+  }, 1500);
+
+</script>
+</body>
+</html>
