@@ -204,3 +204,35 @@
 
 </body>
 </html>
+user_referrals = {
+    "telegram": {},  # user_id -> telegram referrals count
+    "instagram": {}  # user_id -> instagram referrals count
+}
+def get_referral_bonus(user_id):
+    telegram_count = user_referrals["telegram"].get(user_id, 0)
+    instagram_count = user_referrals["instagram"].get(user_id, 0)
+
+    telegram_bonus = telegram_count * 2
+    instagram_bonus = instagram_count * 3
+    total_bonus = telegram_bonus + instagram_bonus
+
+    return telegram_count, instagram_count, telegram_bonus, instagram_bonus, total_bonus
+@bot.message_handler(commands=['referral'])
+def cmd_referral(m):
+    user_id = str(m.from_user.id)
+    tg_count, ig_count, tg_bonus, ig_bonus, total = get_referral_bonus(user_id)
+    text = (
+        f"Դու ունես ակտիվ referrals:\n"
+        f"Telegram: {tg_count} (բոնուս՝ ${tg_bonus})\n"
+        f"Instagram: {ig_count} (բոնուս՝ ${ig_bonus})\n"
+        f"Ընդհանուր բոնուս՝ ${total}\n\n"
+        "Շնորհակալություն, որ տարածում ես մեր ծրագիրը։"
+    )
+    bot.send_message(m.chat.id, text)
+def add_referral(user_id, platform):
+    if platform not in user_referrals:
+        return
+    user_referrals[platform][user_id] = user_referrals[platform].get(user_id, 0) + 1
+add_referral("123456789", "telegram")
+add_referral("123456789", "instagram")
+add_referral("123456789", "instagram")
