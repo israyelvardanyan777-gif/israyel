@@ -480,17 +480,17 @@
         <div class="bg-white rounded-2xl card-shadow p-6 mb-6">
             <div class="mb-6">
                 <label class="block text-gray-700 font-medium mb-2">Initial Amount ($)</label>
-             <input type="number" id="targetAmount" value="270" <input class="block text-gray-300 font-medium mb-2"> focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
+                <input type="number" id="initialAmount" value="100" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
             </div>
 
             <div class="mb-6">
                 <label class="block text-gray-700 font-medium mb-2">Time Period (days)</label>
-              <input type="number" id="targetAmount" value="270" <input class="block text-gray-300 font-medium mb-2"> focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
+                <input type="number" id="days" value="120" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
             </div>
 
             <div class="mb-6">
                 <label class="block text-gray-700 font-medium mb-2">Target Amount ($)</label>
-                <input type="number" id="targetAmount" value="270" <input class="block text-gray-300 font-medium mb-2"> focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
+                <input type="number" id="targetAmount" value="270" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
             </div>
 
             <button onclick="calculateInvestment()" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
@@ -535,6 +535,28 @@
         <div id="timelineCard" class="bg-white rounded-2xl card-shadow p-6 hidden">
             <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📈 Investment Timeline</h3>
             <div id="timeline" class="space-y-3"></div>
+        </div>
+
+        <!-- Human-like Earnings Generator -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mt-6">
+            <h3 class="text-lg font-semibold text-white mb-4">💸 Live Earnings Generator</h3>
+            <div class="text-center mb-4">
+                <div class="text-sm text-white/80 mb-2" id="hourlyRateDisplay">
+                    Hourly Rate: $0.00/hour
+                </div>
+                <button id="earningsBtn" onclick="toggleEarnings()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                    Start Earning
+                </button>
+            </div>
+            <div id="earningsDisplay" class="hidden">
+                <div class="bg-white/20 rounded-lg p-4 mb-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-white mb-2" id="currentBalance">$0.00</div>
+                        <div class="text-sm text-white/80">Current Balance</div>
+                    </div>
+                </div>
+                <div class="space-y-2" id="earningsLog"></div>
+            </div>
         </div>
 
         <!-- Quick Examples -->
@@ -626,6 +648,7 @@
                 document.getElementById('days').value && 
                 document.getElementById('targetAmount').value) {
                 calculateInvestment();
+                calculateHourlyRate();
             }
         });
 
@@ -634,6 +657,7 @@
                 document.getElementById('days').value && 
                 document.getElementById('targetAmount').value) {
                 calculateInvestment();
+                calculateHourlyRate();
             }
         });
 
@@ -642,13 +666,141 @@
                 document.getElementById('days').value && 
                 document.getElementById('targetAmount').value) {
                 calculateInvestment();
+                calculateHourlyRate();
             }
         });
 
         // Initial calculation
         calculateInvestment();
+
+        // Earnings Generator Variables
+        let earningsInterval;
+        let isEarning = false;
+        let currentBalance = 0;
+        let earningsCount = 0;
+        let startTime = null;
+        let targetHourlyRate = 0;
+
+        const earningsSources = [
+            { name: "Trading Bot", emoji: "🤖" },
+            { name: "Crypto Mining", emoji: "⛏️" },
+            { name: "Stock Dividend", emoji: "📈" },
+            { name: "Forex Trade", emoji: "💱" },
+            { name: "NFT Sale", emoji: "🎨" },
+            { name: "Affiliate Commission", emoji: "🤝" },
+            { name: "Yield Farming", emoji: "🌾" },
+            { name: "Options Trade", emoji: "📊" }
+        ];
+
+        function calculateHourlyRate() {
+            const initial = parseFloat(document.getElementById('initialAmount').value) || 100;
+            const target = parseFloat(document.getElementById('targetAmount').value) || 270;
+            const days = parseInt(document.getElementById('days').value) || 120;
+            
+            const totalProfit = target - initial;
+            const totalHours = days * 24; // 120 days = 2,880 hours
+            targetHourlyRate = totalProfit / totalHours;
+            
+            // Update hourly rate display
+            document.getElementById('hourlyRateDisplay').textContent = 
+                `Hourly Rate: $${targetHourlyRate.toFixed(4)}/hour (${days} days = ${totalHours.toLocaleString()} hours)`;
+            
+            return targetHourlyRate;
+        }
+
+        function toggleEarnings() {
+            const btn = document.getElementById('earningsBtn');
+            const display = document.getElementById('earningsDisplay');
+            
+            if (!isEarning) {
+                // Calculate realistic hourly rate
+                calculateHourlyRate();
+                
+                // Start earning
+                isEarning = true;
+                startTime = Date.now();
+                btn.textContent = 'Stop Earning';
+                btn.className = 'bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105';
+                display.classList.remove('hidden');
+                
+                // Generate earnings every 2-8 seconds
+                earningsInterval = setInterval(generateEarning, getRandomInterval());
+            } else {
+                // Stop earning
+                isEarning = false;
+                btn.textContent = 'Start Earning';
+                btn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105';
+                clearInterval(earningsInterval);
+            }
+        }
+
+        function generateEarning() {
+            if (!isEarning) return;
+            
+            // Calculate how much time has passed in real hours
+            const currentTime = Date.now();
+            const hoursElapsed = (currentTime - startTime) / (1000 * 60 * 60);
+            
+            // Calculate expected earnings based on real time
+            const expectedEarnings = hoursElapsed * targetHourlyRate;
+            
+            // If we're behind, generate a larger earning to catch up
+            const earningDeficit = expectedEarnings - currentBalance;
+            
+            const source = earningsSources[Math.floor(Math.random() * earningsSources.length)];
+            
+            // Generate earning amount based on deficit and some randomness
+            let amount;
+            if (earningDeficit > 0) {
+                // We're behind, generate larger amounts
+                amount = Math.max(0.01, earningDeficit * (0.1 + Math.random() * 0.3));
+            } else {
+                // We're on track, generate smaller amounts
+                amount = targetHourlyRate * (0.01 + Math.random() * 0.05);
+            }
+            
+            const roundedAmount = Math.round(amount * 100) / 100;
+            
+            currentBalance += roundedAmount;
+            earningsCount++;
+            
+            // Update balance display
+            document.getElementById('currentBalance').textContent = '$' + currentBalance.toFixed(2);
+            
+            // Add to earnings log
+            const log = document.getElementById('earningsLog');
+            const entry = document.createElement('div');
+            entry.className = 'flex justify-between items-center p-2 bg-white/10 rounded text-white text-sm animate-pulse';
+            entry.innerHTML = `
+                <span>${source.emoji} ${source.name}</span>
+                <span class="font-bold text-green-300">+$${roundedAmount.toFixed(2)}</span>
+            `;
+            
+            log.insertBefore(entry, log.firstChild);
+            
+            // Keep only last 8 entries
+            while (log.children.length > 8) {
+                log.removeChild(log.lastChild);
+            }
+            
+            // Remove pulse animation after 2 seconds
+            setTimeout(() => {
+                entry.classList.remove('animate-pulse');
+            }, 2000);
+            
+            // Set next earning interval
+            if (isEarning) {
+                clearInterval(earningsInterval);
+                earningsInterval = setInterval(generateEarning, getRandomInterval());
+            }
+        }
+
+        function getRandomInterval() {
+            // Random interval between 2-8 seconds (2000-8000ms)
+            return Math.floor(Math.random() * 6000) + 2000;
+        }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d3f865f68fddcd',t:'MTc1NDg3NTg1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d411f3e0ddddd1',t:'MTc1NDg3NjkwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
 
 
