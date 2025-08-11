@@ -473,8 +473,8 @@
     <div class="max-w-md mx-auto">
         <!-- Header -->
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-white mb-2">💰 Ներդրումային Հաշվարկիչ</h1>
-            <p class="text-white/80">Հաշվարկեք ձեր ներդրումների աճը</p>
+            <h1 class="text-3xl font-bold text-white mb-2">💰 Ներդրում</h1>
+            <p class="text-white/80">Շահույթ</p>
         </div>
 
         <!-- Main Calculator Card -->
@@ -482,19 +482,19 @@
             <!-- Input Section -->
             <div class="space-y-4 mb-6">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Սկզբնական գումար ($)</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Սկիզբ ($)</label>
                     <input type="number" id="initialAmount" value="100" 
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg font-semibold">
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Նպատակային գումար ($)</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Նպատակ ($)</label>
                     <input type="number" id="targetAmount" value="260" 
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg font-semibold">
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Ժամկետ (օրեր)</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Օրեր</label>
                     <input type="number" id="days" value="120" 
                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg font-semibold">
                 </div>
@@ -503,32 +503,28 @@
             <!-- Calculate Button -->
             <button onclick="calculateInvestment()" 
                     class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 transform hover:scale-105">
-                📊 Հաշվարկել
+                📊 OK
             </button>
         </div>
 
         <!-- Results Card -->
         <div id="resultsCard" class="bg-white rounded-2xl card-shadow p-6 hidden">
-            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📈 Արդյունքներ</h3>
+            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📈</h3>
             
             <!-- Key Metrics -->
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <div class="bg-green-50 rounded-lg p-4 text-center">
                     <div class="text-2xl font-bold text-green-600" id="dailyReturn">0%</div>
-                    <div class="text-sm text-gray-600">Օրական եկամուտ</div>
+                    <div class="text-sm text-gray-600">Օրական</div>
                 </div>
                 <div class="bg-blue-50 rounded-lg p-4 text-center">
                     <div class="text-2xl font-bold text-blue-600" id="totalReturn">0%</div>
-                    <div class="text-sm text-gray-600">Ընդհանուր եկամուտ</div>
+                    <div class="text-sm text-gray-600">Ընդհանուր</div>
                 </div>
             </div>
 
             <!-- Progress Bar -->
             <div class="mb-6">
-                <div class="flex justify-between text-sm text-gray-600 mb-2">
-                    <span>Առաջընթաց</span>
-                    <span id="progressPercent">0%</span>
-                </div>
                 <div class="w-full bg-gray-200 rounded-full h-3">
                     <div id="progressBar" class="progress-bar bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full" style="width: 0%"></div>
                 </div>
@@ -536,14 +532,13 @@
 
             <!-- Daily Breakdown -->
             <div class="bg-gray-50 rounded-lg p-4">
-                <h4 class="font-semibold text-gray-800 mb-3">💡 Մանրամասներ</h4>
                 <div class="space-y-2 text-sm">
                     <div class="flex justify-between">
-                        <span class="text-gray-600">Սկզբնական գումար:</span>
+                        <span class="text-gray-600">Սկիզբ:</span>
                         <span class="font-semibold" id="displayInitial">$100</span>
                     </div>
                     <div class="flex justify-between">
-                        <span class="text-gray-600">Վերջնական գումար:</span>
+                        <span class="text-gray-600">Վերջ:</span>
                         <span class="font-semibold text-green-600" id="displayFinal">$260</span>
                     </div>
                     <div class="flex justify-between">
@@ -560,7 +555,7 @@
 
         <!-- Quick Presets -->
         <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 mt-6">
-            <h4 class="text-white font-semibold mb-3 text-center">⚡ Արագ ընտրություններ</h4>
+            <h4 class="text-white font-semibold mb-3 text-center">⚡</h4>
             <div class="grid grid-cols-2 gap-2">
                 <button onclick="setPreset(100, 200, 90)" 
                         class="bg-white/20 text-white px-3 py-2 rounded-lg text-sm hover:bg-white/30 transition-colors">
@@ -635,5 +630,5 @@
         // Initial calculation
         calculateInvestment();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d3c4006438ddce',t:'MTc1NDg3MzcwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d3ccf82543ddce',t:'MTc1NDg3NDA3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
