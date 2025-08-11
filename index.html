@@ -601,187 +601,7 @@
             </div>
         </div>
 
-<!DOCTYPE html>
-<html lang="hy">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ներդրումային Պլաններ + Ժամ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #121212;
-            color: #feca57;
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .investment-option {
-            border: 2px solid #feca57;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .investment-option.selected {
-            background-color: #feca57;
-            color: #121212;
-            font-weight: bold;
-        }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            border: 2px solid #feca57;
-            background: #222;
-            color: #feca57;
-            outline: none;
-        }
-        button {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            border: none;
-            padding: 12px 20px;
-            font-size: 1.1rem;
-            border-radius: 25px;
-            color: white;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s ease;
-        }
-        button:hover {
-            transform: translateY(-3px);
-        }
-        .info {
-            background: #222;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            line-height: 1.5;
-        }
-        .time {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 1.4rem;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <h2>🚀 Ընտրեք ներդրումային ծրագիր</h2>
 
-    <div id="plans">
-        <div class="investment-option" data-min="5" data-daily="10" data-days="6" onclick="selectPlan(this)">
-            🟢 Starter Plan — Նվազագույն $5 | Օրեկան +10% | 6 օր
-        </div>
-        <div class="investment-option" data-min="50" data-daily="15" data-days="6" onclick="selectPlan(this)">
-            🔵 Pro Plan — Նվազագույն $50 | Օրեկան +15% | 6 օր
-        </div>
-        <div class="investment-option" data-min="250" data-daily="20" data-days="6" onclick="selectPlan(this)">
-            🔴 VIP Plan — Նվազագույն $250 | Օրեկան +20% | 6 օր
-        </div>
-    </div>
-
-    <div class="input-group">
-        <label for="investmentAmount">Մուտքագրեք ներդրման գումարը ($):</label>
-        <input type="number" id="investmentAmount" min="0" placeholder="Օրինակ՝ 100" oninput="calculateProfit()" />
-    </div>
-
-    <div id="result" class="info">Ընտրեք ծրագիր և մուտքագրեք գումարը՝ հաշվարկելու համար:</div>
-
-    <button onclick="makeInvestment()">Կատարել ներդրում</button>
-
-    <div class="time" id="currentTime"></div>
-
-<script>
-    let selectedPlan = null;
-
-    function selectPlan(element) {
-        // Մաքրենք բոլորից ընտրությունը
-        document.querySelectorAll('.investment-option').forEach(el => {
-            el.classList.remove('selected');
-        });
-        element.classList.add('selected');
-
-        // Ստեղնեմ ընտրած ծրագիրը
-        selectedPlan = {
-            min: Number(element.dataset.min),
-            dailyPercent: Number(element.dataset.daily),
-            days: Number(element.dataset.days),
-            name: element.textContent.trim()
-        };
-
-        // Հաշվարկենք եկամուտը, եթե գումար կա
-        calculateProfit();
-    }
-
-    function calculateProfit() {
-        const amountInput = document.getElementById('investmentAmount');
-        const resultDiv = document.getElementById('result');
-
-        if (!selectedPlan) {
-            resultDiv.textContent = "Խնդրում ենք ընտրել ներդրումային ծրագիր։";
-            return;
-        }
-
-        const amount = Number(amountInput.value);
-
-        if (isNaN(amount) || amount < selectedPlan.min) {
-            resultDiv.textContent = `Նվազագույն ներդրում այս ծրագրով $${selectedPlan.min} է։`;
-            return;
-        }
-
-        // Հաշվարկ՝ շահույթ = գումար * (օրեկան տոկոս / 100) * օրերի քանակ
-        const profit = amount * (selectedPlan.dailyPercent / 100) * selectedPlan.days;
-
-        resultDiv.innerHTML = `
-            Ընտրված ծրագիր՝ <strong>${selectedPlan.name}</strong><br />
-            Ներդրում՝ $${amount.toFixed(2)}<br />
-            Նվազագույն գումար՝ $${selectedPlan.min}<br />
-            Օրեկան տոկոս՝ ${selectedPlan.dailyPercent}%<br />
-            Ժամկետ՝ ${selectedPlan.days} օր<br />
-            <strong>Ընդհանուր շահույթը կլինի՝ $${profit.toFixed(2)}</strong>
-        `;
-    }
-
-    function makeInvestment() {
-        const amountInput = document.getElementById('investmentAmount');
-        if (!selectedPlan) {
-            alert('Խնդրում ենք նախընտրել ներդրումային ծրագիր։');
-            return;
-        }
-        const amount = Number(amountInput.value);
-        if (isNaN(amount) || amount < selectedPlan.min) {
-            alert(`Նվազագույն ներդրում այս ծրագրով $${selectedPlan.min} է։`);
-            return;
-        }
-        alert(`Շնորհավորում ենք, դուք ներդրում եք կատարել ${selectedPlan.name} ծրագրով $${amount.toFixed(2)} գումարով։`);
-    }
-
-    // Ժամանակը թարմացնելու ֆունկցիա
-    function updateTime() {
-        const now = new Date();
-        const timeDiv = document.getElementById('currentTime');
-        // Ֆորմատ - ժամ:րոպե:վայրկյան
-        const timeString = now.toLocaleTimeString('hy-AM', { hour12: false });
-        timeDiv.textContent = `Հիմա ժամը՝ ${timeString}`;
-    }
-
-    setInterval(updateTime, 1000);
-    updateTime(); // Կոչենք նաև էջի բեռնումին
-</script>
-</body>
-</html>       
                 <button class="btn" style="width: 100%; background: linear-gradient(45deg, #8b5cf6, #7c3aed);" onclick="startInvestment()">
                     🎯 Start Investment
                 </button>
@@ -791,6 +611,39 @@
                         <div class="stat-value" id="activeInvestments">0</div>
                         <div class="stat-label">Active Plans</div>
                     </div>
+                    604 <!-- Investment Plans Section -->
+        <div class="section" id="investmentSection">
+            <div class="investment-section">
+                <h3 class="investment-title">🚀 Investment Plans</h3>
+                <div class="investment-options">
+                    <div class="investment-option starter-plan" onclick="selectPlan(this, 5, 10)" data-plan="1">
+                        <div class="option-title">🟢 Starter Plan</div>
+                        <div class="option-details">Min: $5 | Daily: +2% | 6 days</div>
+                    </div>
+                    <div class="investment-option pro-plan" onclick="selectPlan(this, 50, 15)" data-plan="2">
+                        <div class="option-title">🔵 Pro Plan</div>
+                        <div class="option-details">Min: $10 | Daily: +8% | 6 days</div>
+                    </div>
+                    <div class="investment-option vip-plan" onclick="selectPlan(this, 250, 20)" data-plan="3">
+                        <div class="option-title">🔴 VIP Plan</div>
+                        <div class="option-details">Min: $15 | Daily: +12% | 6 days</div>
+                    </div>
+                </div>
+                <div class="input-group" style="margin-top: 15px;">
+                    <label class="input-label">Investment Amount ($)</label>
+                    <input type="number" class="input-field" id="investAmount" placeholder="Enter amount" min="5">
+                </div>
+                <button class="btn" style="width: 100%; background: linear-gradient(45deg, #8b5cf6, #7c3aed);" onclick="startInvestment()">
+                    🎯 Start Investment
+                </button>
+                
+                <div class="stats-grid" style="margin-top: 20px;">
+                    <div class="stat-card">
+                        <div class="stat-value" id="activeInvestments">0</div>
+                        <div class="stat-label">Active Plans</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="dailyProfit">$0.00</div>
                     <div class="stat-card">
                         <div class="stat-value" id="dailyProfit">$0.00</div>
                         <div class="stat-label">Daily Profit</div>
