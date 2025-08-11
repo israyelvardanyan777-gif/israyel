@@ -449,361 +449,1168 @@
   </div>
   <div id="menu" class="section">
 <!DOCTYPE html>
-<html lang="hy">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Mini App</title>
+    <title>ProFin - Professional Investment Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .card-shadow { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-        .progress-bar { transition: width 0.5s ease-in-out; }
-        .pulse-animation { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+        
+        .gradient-secondary {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .gradient-success {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .gradient-warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .gradient-danger {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        }
+        
+        .gradient-info {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+        }
+        
+        .chart-bar {
+            transition: height 0.8s ease-in-out;
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #667eea;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #667eea; }
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .indicator-positive {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+        }
+        
+        .indicator-negative {
+            background: linear-gradient(45deg, #ff4757, #ff3838);
+        }
+        
+        .indicator-neutral {
+            background: linear-gradient(45deg, #ffa502, #ff6348);
         }
     </style>
 </head>
-<body class="gradient-bg min-h-screen py-8 px-4">
-    <div class="max-w-md mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-white mb-2">💰 Investment Calculator</h1>
-            <p class="text-white/80">Calculate your investment growth</p>
-        </div>
-
-        <!-- Investment Calculator Card -->
-        <div class="bg-white rounded-2xl card-shadow p-6 mb-6">
-            <div class="mb-6">
-                <label class="block text-gray-700 font-medium mb-2">Initial Amount ($)</label>
-                <input type="number" id="initialAmount" value="100" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
-            </div>
-
-            <div class="mb-6">
-                <label class="block text-gray-700 font-medium mb-2">Time Period (days)</label>
-                <input type="number" id="days" value="120" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
-            </div>
-
-            <div class="mb-6">
-                <label class="block text-gray-700 font-medium mb-2">Target Amount ($)</label>
-                <input type="number" id="targetAmount" value="270" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
-            </div>
-
-            <button onclick="calculateInvestment()" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                Calculate Investment
-            </button>
-        </div>
-
-        <!-- Results Card -->
-        <div id="resultsCard" class="bg-white rounded-2xl card-shadow p-6 mb-6 hidden">
-            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📊 Results</h3>
-            
-            <div class="space-y-4">
-                <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                    <span class="text-gray-700">Monthly Rate:</span>
-                    <span id="monthlyRate" class="font-bold text-green-600"></span>
+<body class="gradient-primary min-h-screen">
+    <!-- Navigation -->
+    <nav class="glass-effect p-4 m-4 rounded-2xl">
+        <div class="flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center">
+                    <span class="text-white font-bold text-2xl">P</span>
                 </div>
-                
-                <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                    <span class="text-gray-700">Total Profit:</span>
-                    <span id="totalProfit" class="font-bold text-blue-600"></span>
-                </div>
-                
-                <div class="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
-                    <span class="text-gray-700">Final Amount:</span>
-                    <span id="finalAmount" class="font-bold text-purple-600"></span>
+                <div>
+                    <h1 class="text-white font-bold text-xl">ProFin Suite</h1>
+                    <p class="text-white/60 text-xs">Professional Trading Platform</p>
                 </div>
             </div>
-
-            <!-- Progress Bar -->
-            <div class="mt-6">
-                <div class="flex justify-between text-sm text-gray-600 mb-2">
-                    <span>Progress</span>
-                    <span id="progressPercent">0%</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-3">
-                    <div id="progressBar" class="progress-bar bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full" style="width: 0%"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Investment Timeline -->
-        <div id="timelineCard" class="bg-white rounded-2xl card-shadow p-6 hidden">
-            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📈 Investment Timeline</h3>
-            <div id="timeline" class="space-y-3"></div>
-        </div>
-
-        <!-- Human-like Earnings Generator -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mt-6">
-            <h3 class="text-lg font-semibold text-white mb-4">💸 Live Earnings Generator</h3>
-            <div class="text-center mb-4">
-                <div class="text-sm text-white/80 mb-2" id="hourlyRateDisplay">
-                    Hourly Rate: $0.00/hour
-                </div>
-                <button id="earningsBtn" onclick="toggleEarnings()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
-                    Start Earning
+            <div class="flex flex-wrap gap-2 mt-2 md:mt-0">
+                <button onclick="switchTab('dashboard')" id="dashboardTab" class="px-3 py-2 rounded-lg text-white bg-white/20 hover:bg-white/30 transition-all text-sm">
+                    📊 Dashboard
+                </button>
+                <button onclick="switchTab('calculator')" id="calculatorTab" class="px-3 py-2 rounded-lg text-white hover:bg-white/20 transition-all text-sm">
+                    🧮 Calculator
+                </button>
+                <button onclick="switchTab('portfolio')" id="portfolioTab" class="px-3 py-2 rounded-lg text-white hover:bg-white/20 transition-all text-sm">
+                    💼 Portfolio
+                </button>
+                <button onclick="switchTab('trading')" id="tradingTab" class="px-3 py-2 rounded-lg text-white hover:bg-white/20 transition-all text-sm">
+                    📈 Trading
+                </button>
+                <button onclick="switchTab('analysis')" id="analysisTab" class="px-3 py-2 rounded-lg text-white hover:bg-white/20 transition-all text-sm">
+                    🔍 Analysis
+                </button>
+                <button onclick="switchTab('learning')" id="learningTab" class="px-3 py-2 rounded-lg text-white hover:bg-white/20 transition-all text-sm">
+                    🎓 Learning
                 </button>
             </div>
-            <div id="earningsDisplay" class="hidden">
-                <div class="bg-white/20 rounded-lg p-4 mb-4">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-white mb-2" id="currentBalance">$0.00</div>
-                        <div class="text-sm text-white/80">Current Balance</div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Tab -->
+    <div id="dashboardContent" class="p-4">
+        <!-- Hero Section -->
+        <div class="glass-effect rounded-3xl p-8 mb-6 text-center floating-animation">
+            <h2 class="text-4xl font-bold text-white mb-4 typing-animation">Welcome to Professional Trading</h2>
+            <p class="text-white/80 text-lg mb-6">Advanced investment tools for serious traders</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="gradient-success rounded-2xl p-6 card-hover">
+                    <div class="text-3xl mb-2">💰</div>
+                    <h3 class="text-white font-bold text-xl mb-2">Total Portfolio</h3>
+                    <p class="text-white text-2xl font-bold" id="totalPortfolio">$12,847.50</p>
+                    <p class="text-green-200 text-sm">+15.2% this month</p>
+                </div>
+                <div class="gradient-secondary rounded-2xl p-6 card-hover">
+                    <div class="text-3xl mb-2">📈</div>
+                    <h3 class="text-white font-bold text-xl mb-2">Active Trades</h3>
+                    <p class="text-white text-2xl font-bold" id="activeTrades">7</p>
+                    <p class="text-blue-200 text-sm">3 profitable positions</p>
+                </div>
+                <div class="gradient-warning rounded-2xl p-6 card-hover">
+                    <div class="text-3xl mb-2">⚡</div>
+                    <h3 class="text-white font-bold text-xl mb-2">Daily P&L</h3>
+                    <p class="text-white text-2xl font-bold" id="dailyPL">+$247.80</p>
+                    <p class="text-yellow-200 text-sm">Best day this week</p>
+                </div>
+                <div class="gradient-info rounded-2xl p-6 card-hover">
+                    <div class="text-3xl mb-2">🎯</div>
+                    <h3 class="text-white font-bold text-xl mb-2">Win Rate</h3>
+                    <p class="text-white text-2xl font-bold" id="winRate">73.5%</p>
+                    <p class="text-blue-200 text-sm">Above average</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Overview -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <!-- Live Market Data -->
+            <div class="glass-effect rounded-3xl p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-white font-bold text-xl">🔥 Live Market Feed</h3>
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="text-white/60 text-sm">Live</span>
                     </div>
                 </div>
-                <div class="space-y-2" id="earningsLog"></div>
+                <div id="marketFeed" class="space-y-3 max-h-80 overflow-y-auto">
+                    <!-- Market data will be populated here -->
+                </div>
+            </div>
+
+            <!-- Top Movers -->
+            <div class="glass-effect rounded-3xl p-6">
+                <h3 class="text-white font-bold text-xl mb-4">🚀 Top Movers</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center bg-white/5 rounded-xl p-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 gradient-success rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-sm">TSLA</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">Tesla Inc</h4>
+                                <p class="text-white/60 text-sm">Electric Vehicles</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-white font-bold">$847.32</p>
+                            <p class="text-green-300 text-sm">+12.4%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center bg-white/5 rounded-xl p-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 gradient-info rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-sm">NVDA</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">NVIDIA Corp</h4>
+                                <p class="text-white/60 text-sm">Semiconductors</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-white font-bold">$432.18</p>
+                            <p class="text-green-300 text-sm">+8.7%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center bg-white/5 rounded-xl p-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 gradient-danger rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-sm">META</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">Meta Platforms</h4>
+                                <p class="text-white/60 text-sm">Social Media</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-white font-bold">$298.45</p>
+                            <p class="text-red-300 text-sm">-3.2%</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Quick Examples -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mt-6">
-            <h3 class="text-lg font-semibold text-white mb-4">🚀 Quick Examples</h3>
-            <div class="grid grid-cols-1 gap-3">
-                <button onclick="setExample(100, 120, 270)" class="text-left p-3 bg-white/20 rounded-lg text-white hover:bg-white/30 transition-colors">
-                    <div class="font-medium">$100 → $270</div>
-                    <div class="text-sm opacity-80">120 days, 170% profit</div>
+        <!-- Performance Chart -->
+        <div class="glass-effect rounded-3xl p-6 mb-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-white font-bold text-xl">📊 Performance Chart</h3>
+                <div class="flex space-x-2">
+                    <button class="px-3 py-1 bg-white/20 text-white rounded-lg text-sm hover:bg-white/30 transition-all">1D</button>
+                    <button class="px-3 py-1 bg-white/20 text-white rounded-lg text-sm hover:bg-white/30 transition-all">1W</button>
+                    <button class="px-3 py-1 bg-white/40 text-white rounded-lg text-sm">1M</button>
+                    <button class="px-3 py-1 bg-white/20 text-white rounded-lg text-sm hover:bg-white/30 transition-all">1Y</button>
+                </div>
+            </div>
+            <div class="flex justify-center items-end space-x-3 h-48">
+                <div class="chart-bar bg-green-400 w-12 rounded-t" style="height: 60%"></div>
+                <div class="chart-bar bg-blue-400 w-12 rounded-t" style="height: 80%"></div>
+                <div class="chart-bar bg-purple-400 w-12 rounded-t" style="height: 45%"></div>
+                <div class="chart-bar bg-pink-400 w-12 rounded-t" style="height: 90%"></div>
+                <div class="chart-bar bg-yellow-400 w-12 rounded-t" style="height: 70%"></div>
+                <div class="chart-bar bg-indigo-400 w-12 rounded-t" style="height: 85%"></div>
+                <div class="chart-bar bg-red-400 w-12 rounded-t" style="height: 55%"></div>
+                <div class="chart-bar bg-green-500 w-12 rounded-t" style="height: 95%"></div>
+                <div class="chart-bar bg-blue-500 w-12 rounded-t" style="height: 75%"></div>
+                <div class="chart-bar bg-purple-500 w-12 rounded-t" style="height: 65%"></div>
+            </div>
+            <div class="flex justify-center space-x-6 mt-4 text-white/60 text-sm">
+                <span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span><span>Week 5</span>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="glass-effect rounded-3xl p-6">
+            <h3 class="text-white font-bold text-xl mb-4">⚡ Quick Actions</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button class="gradient-success p-4 rounded-xl text-white font-bold hover:scale-105 transition-all">
+                    <div class="text-2xl mb-2">💸</div>
+                    <div>Buy Order</div>
                 </button>
-                <button onclick="setExample(500, 90, 1000)" class="text-left p-3 bg-white/20 rounded-lg text-white hover:bg-white/30 transition-colors">
-                    <div class="font-medium">$500 → $1000</div>
-                    <div class="text-sm opacity-80">90 days, 100% profit</div>
+                <button class="gradient-danger p-4 rounded-xl text-white font-bold hover:scale-105 transition-all">
+                    <div class="text-2xl mb-2">📉</div>
+                    <div>Sell Order</div>
                 </button>
-                <button onclick="setExample(1000, 180, 2500)" class="text-left p-3 bg-white/20 rounded-lg text-white hover:bg-white/30 transition-colors">
-                    <div class="font-medium">$1000 → $2500</div>
-                    <div class="text-sm opacity-80">180 days, 150% profit</div>
+                <button class="gradient-info p-4 rounded-xl text-white font-bold hover:scale-105 transition-all">
+                    <div class="text-2xl mb-2">📊</div>
+                    <div>Analysis</div>
+                </button>
+                <button class="gradient-warning p-4 rounded-xl text-white font-bold hover:scale-105 transition-all">
+                    <div class="text-2xl mb-2">⚙️</div>
+                    <div>Settings</div>
                 </button>
             </div>
         </div>
     </div>
 
-    <script>
-        function calculateInvestment() {
-            const initial = parseFloat(document.getElementById('initialAmount').value);
-            const days = parseInt(document.getElementById('days').value);
-            const target = parseFloat(document.getElementById('targetAmount').value);
+    <!-- Calculator Tab -->
+    <div id="calculatorContent" class="p-4 hidden">
+        <div class="glass-effect rounded-3xl p-8">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">🧮 Advanced Investment Calculator</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Input Section -->
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-white font-medium mb-2">💵 Initial Investment</label>
+                        <input type="number" id="calcInitial" value="1000" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-white/50 focus:outline-none">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white font-medium mb-2">📅 Investment Period (months)</label>
+                        <input type="number" id="calcMonths" value="12" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-white/50 focus:outline-none">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white font-medium mb-2">📈 Expected Annual Return (%)</label>
+                        <input type="number" id="calcReturn" value="15" step="0.1" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-white/50 focus:outline-none">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white font-medium mb-2">💰 Monthly Contribution</label>
+                        <input type="number" id="calcContribution" value="200" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-white/50 focus:outline-none">
+                    </div>
+                    
+                    <button onclick="calculateAdvanced()" class="w-full gradient-success text-white font-bold py-4 px-6 rounded-xl hover:scale-105 transition-all pulse-glow">
+                        Calculate Returns
+                    </button>
+                </div>
+                
+                <!-- Results Section -->
+                <div id="calcResults" class="space-y-4">
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="text-white font-bold mb-2">Final Amount</h4>
+                        <p class="text-3xl font-bold text-green-300" id="finalAmount">$0</p>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="text-white font-bold mb-2">Total Profit</h4>
+                        <p class="text-2xl font-bold text-blue-300" id="totalProfit">$0</p>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="text-white font-bold mb-2">ROI Percentage</h4>
+                        <p class="text-2xl font-bold text-purple-300" id="roiPercent">0%</p>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-xl p-4">
+                        <h4 class="text-white font-bold mb-2">Monthly Breakdown</h4>
+                        <div id="monthlyBreakdown" class="text-white/80 text-sm space-y-1">
+                            <!-- Monthly data will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            if (!initial || !days || !target || initial <= 0 || days <= 0 || target <= initial) {
-                alert('Please enter valid values');
+    <!-- Portfolio Tab -->
+    <div id="portfolioContent" class="p-4 hidden">
+        <div class="glass-effect rounded-3xl p-8">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">💼 Portfolio Manager</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Add Investment -->
+                <div class="bg-white/10 rounded-2xl p-6">
+                    <h3 class="text-white font-bold text-xl mb-4">➕ Add Investment</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="assetName" placeholder="Asset Name (e.g., AAPL)" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-white/50 focus:outline-none">
+                        <input type="number" id="assetAmount" placeholder="Amount Invested" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-white/50 focus:outline-none">
+                        <input type="number" id="assetPrice" placeholder="Current Price" step="0.01" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-white/50 focus:outline-none">
+                        <button onclick="addAsset()" class="w-full gradient-secondary text-white font-bold py-3 px-6 rounded-xl hover:scale-105 transition-all">
+                            Add to Portfolio
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Summary -->
+                <div class="bg-white/10 rounded-2xl p-6">
+                    <h3 class="text-white font-bold text-xl mb-4">📊 Portfolio Summary</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-white/80">Total Assets:</span>
+                            <span class="text-white font-bold" id="totalAssets">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/80">Portfolio Value:</span>
+                            <span class="text-green-300 font-bold" id="portfolioValue">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/80">Best Performer:</span>
+                            <span class="text-yellow-300 font-bold" id="bestPerformer">-</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/80">Worst Performer:</span>
+                            <span class="text-red-300 font-bold" id="worstPerformer">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Portfolio Assets -->
+            <div class="bg-white/10 rounded-2xl p-6">
+                <h3 class="text-white font-bold text-xl mb-4">📈 Your Assets</h3>
+                <div id="portfolioAssets" class="space-y-3">
+                    <p class="text-white/60 text-center py-8">No assets added yet. Add your first investment above!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trading Tab -->
+    <div id="tradingContent" class="p-4 hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Order Book -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Trading Interface -->
+                <div class="glass-effect rounded-3xl p-6">
+                    <h2 class="text-2xl font-bold text-white mb-6">📈 Trading Interface</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Buy Section -->
+                        <div class="bg-green-500/10 border border-green-500/30 rounded-2xl p-6">
+                            <h3 class="text-green-300 font-bold text-lg mb-4">💸 Buy Order</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-white/80 text-sm mb-2">Symbol</label>
+                                    <input type="text" id="buySymbol" placeholder="e.g., AAPL" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-green-500/50 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-white/80 text-sm mb-2">Quantity</label>
+                                    <input type="number" id="buyQuantity" placeholder="Number of shares" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-green-500/50 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-white/80 text-sm mb-2">Price ($)</label>
+                                    <input type="number" id="buyPrice" placeholder="Price per share" step="0.01" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-green-500/50 focus:outline-none">
+                                </div>
+                                <button onclick="placeBuyOrder()" class="w-full gradient-success text-white font-bold py-3 px-6 rounded-xl hover:scale-105 transition-all pulse-glow">
+                                    Place Buy Order
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Sell Section -->
+                        <div class="bg-red-500/10 border border-red-500/30 rounded-2xl p-6">
+                            <h3 class="text-red-300 font-bold text-lg mb-4">📉 Sell Order</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-white/80 text-sm mb-2">Symbol</label>
+                                    <input type="text" id="sellSymbol" placeholder="e.g., AAPL" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-red-500/50 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-white/80 text-sm mb-2">Quantity</label>
+                                    <input type="number" id="sellQuantity" placeholder="Number of shares" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-red-500/50 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-white/80 text-sm mb-2">Price ($)</label>
+                                    <input type="number" id="sellPrice" placeholder="Price per share" step="0.01" class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-red-500/50 focus:outline-none">
+                                </div>
+                                <button onclick="placeSellOrder()" class="w-full gradient-danger text-white font-bold py-3 px-6 rounded-xl hover:scale-105 transition-all">
+                                    Place Sell Order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order History -->
+                <div class="glass-effect rounded-3xl p-6">
+                    <h3 class="text-white font-bold text-xl mb-4">📋 Order History</h3>
+                    <div id="orderHistory" class="space-y-3 max-h-64 overflow-y-auto">
+                        <p class="text-white/60 text-center py-8">No orders placed yet</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Market Data Sidebar -->
+            <div class="space-y-6">
+                <!-- Watchlist -->
+                <div class="glass-effect rounded-3xl p-6">
+                    <h3 class="text-white font-bold text-xl mb-4">👁️ Watchlist</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center bg-white/5 rounded-lg p-3">
+                            <div>
+                                <h4 class="text-white font-bold">AAPL</h4>
+                                <p class="text-white/60 text-sm">Apple Inc</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-white font-bold">$175.43</p>
+                                <p class="text-green-300 text-sm">+2.1%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center bg-white/5 rounded-lg p-3">
+                            <div>
+                                <h4 class="text-white font-bold">GOOGL</h4>
+                                <p class="text-white/60 text-sm">Alphabet Inc</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-white font-bold">$2,847.32</p>
+                                <p class="text-red-300 text-sm">-1.3%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center bg-white/5 rounded-lg p-3">
+                            <div>
+                                <h4 class="text-white font-bold">MSFT</h4>
+                                <p class="text-white/60 text-sm">Microsoft Corp</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-white font-bold">$412.89</p>
+                                <p class="text-green-300 text-sm">+0.8%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trading Stats -->
+                <div class="glass-effect rounded-3xl p-6">
+                    <h3 class="text-white font-bold text-xl mb-4">📊 Trading Stats</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <span class="text-white/80">Total Trades:</span>
+                            <span class="text-white font-bold" id="totalTrades">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/80">Successful:</span>
+                            <span class="text-green-300 font-bold" id="successfulTrades">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/80">Failed:</span>
+                            <span class="text-red-300 font-bold" id="failedTrades">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/80">Success Rate:</span>
+                            <span class="text-blue-300 font-bold" id="successRate">0%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Risk Management -->
+                <div class="glass-effect rounded-3xl p-6">
+                    <h3 class="text-white font-bold text-xl mb-4">⚠️ Risk Management</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-white/80 text-sm mb-2">Stop Loss (%)</label>
+                            <input type="number" id="stopLoss" value="5" class="w-full px-3 py-2 rounded-lg bg-white/10 text-white border border-white/20 focus:border-white/50 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-white/80 text-sm mb-2">Take Profit (%)</label>
+                            <input type="number" id="takeProfit" value="10" class="w-full px-3 py-2 rounded-lg bg-white/10 text-white border border-white/20 focus:border-white/50 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-white/80 text-sm mb-2">Max Position Size (%)</label>
+                            <input type="number" id="maxPosition" value="20" class="w-full px-3 py-2 rounded-lg bg-white/10 text-white border border-white/20 focus:border-white/50 focus:outline-none">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Tab -->
+    <div id="analysisContent" class="p-4 hidden">
+        <div class="glass-effect rounded-3xl p-8">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">🔍 Market Analysis</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Technical Analysis -->
+                <div class="space-y-6">
+                    <div class="bg-white/10 rounded-2xl p-6">
+                        <h3 class="text-white font-bold text-xl mb-4">📈 Technical Indicators</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/80">RSI (14):</span>
+                                <span class="text-yellow-300 font-bold">67.3 (Neutral)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/80">MACD:</span>
+                                <span class="text-green-300 font-bold">Bullish</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/80">Moving Average:</span>
+                                <span class="text-blue-300 font-bold">Above 50-day</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/80">Bollinger Bands:</span>
+                                <span class="text-purple-300 font-bold">Upper Band</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-2xl p-6">
+                        <h3 class="text-white font-bold text-xl mb-4">🎯 Price Targets</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-white/80">Support Level:</span>
+                                <span class="text-red-300 font-bold">$165.20</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-white/80">Resistance Level:</span>
+                                <span class="text-green-300 font-bold">$182.50</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-white/80">Target Price:</span>
+                                <span class="text-blue-300 font-bold">$195.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fundamental Analysis -->
+                <div class="space-y-6">
+                    <div class="bg-white/10 rounded-2xl p-6">
+                        <h3 class="text-white font-bold text-xl mb-4">💼 Fundamental Data</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/80">P/E Ratio:</span>
+                                <span class="text-white font-bold">28.5</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/80">Market Cap:</span>
+                                <span class="text-white font-bold">$2.8T</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/80">Revenue Growth:</span>
+                                <span class="text-green-300 font-bold">+12.4%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-white/80">Debt to Equity:</span>
+                                <span class="text-yellow-300 font-bold">1.73</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/10 rounded-2xl p-6">
+                        <h3 class="text-white font-bold text-xl mb-4">📰 Market Sentiment</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-white/80">Analyst Rating:</span>
+                                <span class="text-green-300 font-bold">Strong Buy</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-white/80">Social Sentiment:</span>
+                                <span class="text-blue-300 font-bold">Positive</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-white/80">News Impact:</span>
+                                <span class="text-yellow-300 font-bold">Neutral</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analysis Chart -->
+            <div class="mt-8 bg-white/10 rounded-2xl p-6">
+                <h3 class="text-white font-bold text-xl mb-4">📊 Price Analysis Chart</h3>
+                <div class="flex justify-center items-end space-x-2 h-64">
+                    <div class="chart-bar bg-red-400 w-6 rounded-t" style="height: 40%"></div>
+                    <div class="chart-bar bg-red-500 w-6 rounded-t" style="height: 35%"></div>
+                    <div class="chart-bar bg-yellow-400 w-6 rounded-t" style="height: 50%"></div>
+                    <div class="chart-bar bg-green-400 w-6 rounded-t" style="height: 65%"></div>
+                    <div class="chart-bar bg-green-500 w-6 rounded-t" style="height: 80%"></div>
+                    <div class="chart-bar bg-green-600 w-6 rounded-t" style="height: 90%"></div>
+                    <div class="chart-bar bg-blue-400 w-6 rounded-t" style="height: 85%"></div>
+                    <div class="chart-bar bg-blue-500 w-6 rounded-t" style="height: 75%"></div>
+                    <div class="chart-bar bg-purple-400 w-6 rounded-t" style="height: 70%"></div>
+                    <div class="chart-bar bg-purple-500 w-6 rounded-t" style="height: 95%"></div>
+                    <div class="chart-bar bg-pink-400 w-6 rounded-t" style="height: 88%"></div>
+                    <div class="chart-bar bg-indigo-400 w-6 rounded-t" style="height: 92%"></div>
+                </div>
+                <div class="flex justify-center space-x-4 mt-4 text-white/60 text-sm">
+                    <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Tab -->
+    <div id="learningContent" class="p-4 hidden">
+        <div class="glass-effect rounded-3xl p-8">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">🎓 Trading Academy</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Beginner Course -->
+                <div class="gradient-success rounded-2xl p-6 card-hover">
+                    <div class="text-4xl mb-4">🌱</div>
+                    <h3 class="text-white font-bold text-xl mb-3">Beginner Basics</h3>
+                    <p class="text-white/80 text-sm mb-4">Learn the fundamentals of trading, market basics, and essential terminology.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="text-white/60 text-sm">• Market fundamentals</div>
+                        <div class="text-white/60 text-sm">• Order types</div>
+                        <div class="text-white/60 text-sm">• Risk management</div>
+                        <div class="text-white/60 text-sm">• Portfolio basics</div>
+                    </div>
+                    <button class="w-full bg-white/20 text-white font-bold py-2 px-4 rounded-lg hover:bg-white/30 transition-all">
+                        Start Course
+                    </button>
+                </div>
+                
+                <!-- Intermediate Course -->
+                <div class="gradient-secondary rounded-2xl p-6 card-hover">
+                    <div class="text-4xl mb-4">📈</div>
+                    <h3 class="text-white font-bold text-xl mb-3">Technical Analysis</h3>
+                    <p class="text-white/80 text-sm mb-4">Master chart patterns, indicators, and technical analysis strategies.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="text-white/60 text-sm">• Chart patterns</div>
+                        <div class="text-white/60 text-sm">• Technical indicators</div>
+                        <div class="text-white/60 text-sm">• Support & resistance</div>
+                        <div class="text-white/60 text-sm">• Trend analysis</div>
+                    </div>
+                    <button class="w-full bg-white/20 text-white font-bold py-2 px-4 rounded-lg hover:bg-white/30 transition-all">
+                        Start Course
+                    </button>
+                </div>
+                
+                <!-- Advanced Course -->
+                <div class="gradient-warning rounded-2xl p-6 card-hover">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-white font-bold text-xl mb-3">Advanced Strategies</h3>
+                    <p class="text-white/80 text-sm mb-4">Advanced trading strategies, algorithmic trading, and portfolio optimization.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="text-white/60 text-sm">• Options trading</div>
+                        <div class="text-white/60 text-sm">• Algorithmic strategies</div>
+                        <div class="text-white/60 text-sm">• Risk modeling</div>
+                        <div class="text-white/60 text-sm">• Portfolio theory</div>
+                    </div>
+                    <button class="w-full bg-white/20 text-white font-bold py-2 px-4 rounded-lg hover:bg-white/30 transition-all">
+                        Start Course
+                    </button>
+                </div>
+                
+                <!-- Market Psychology -->
+                <div class="gradient-info rounded-2xl p-6 card-hover">
+                    <div class="text-4xl mb-4">🧠</div>
+                    <h3 class="text-white font-bold text-xl mb-3">Market Psychology</h3>
+                    <p class="text-white/80 text-sm mb-4">Understanding market emotions, behavioral finance, and trading psychology.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="text-white/60 text-sm">• Emotional control</div>
+                        <div class="text-white/60 text-sm">• Behavioral biases</div>
+                        <div class="text-white/60 text-sm">• Market sentiment</div>
+                        <div class="text-white/60 text-sm">• Discipline strategies</div>
+                    </div>
+                    <button class="w-full bg-white/20 text-white font-bold py-2 px-4 rounded-lg hover:bg-white/30 transition-all">
+                        Start Course
+                    </button>
+                </div>
+                
+                <!-- Crypto Trading -->
+                <div class="gradient-danger rounded-2xl p-6 card-hover">
+                    <div class="text-4xl mb-4">₿</div>
+                    <h3 class="text-white font-bold text-xl mb-3">Crypto Trading</h3>
+                    <p class="text-white/80 text-sm mb-4">Cryptocurrency markets, DeFi, NFTs, and digital asset strategies.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="text-white/60 text-sm">• Blockchain basics</div>
+                        <div class="text-white/60 text-sm">• DeFi protocols</div>
+                        <div class="text-white/60 text-sm">• Crypto analysis</div>
+                        <div class="text-white/60 text-sm">• Yield farming</div>
+                    </div>
+                    <button class="w-full bg-white/20 text-white font-bold py-2 px-4 rounded-lg hover:bg-white/30 transition-all">
+                        Start Course
+                    </button>
+                </div>
+                
+                <!-- News & Updates -->
+                <div class="bg-white/10 rounded-2xl p-6 card-hover">
+                    <div class="text-4xl mb-4">📰</div>
+                    <h3 class="text-white font-bold text-xl mb-3">Market News</h3>
+                    <p class="text-white/80 text-sm mb-4">Stay updated with latest market news, economic events, and analysis.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="text-white/60 text-sm">• Daily market updates</div>
+                        <div class="text-white/60 text-sm">• Economic calendar</div>
+                        <div class="text-white/60 text-sm">• Earnings reports</div>
+                        <div class="text-white/60 text-sm">• Expert analysis</div>
+                    </div>
+                    <button class="w-full bg-white/20 text-white font-bold py-2 px-4 rounded-lg hover:bg-white/30 transition-all">
+                        View News
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Progress Tracking -->
+            <div class="mt-8 bg-white/10 rounded-2xl p-6">
+                <h3 class="text-white font-bold text-xl mb-4">📊 Learning Progress</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-green-300 mb-2">3</div>
+                        <div class="text-white/80">Courses Completed</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-300 mb-2">47</div>
+                        <div class="text-white/80">Hours Studied</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-purple-300 mb-2">89%</div>
+                        <div class="text-white/80">Quiz Average</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentTab = 'dashboard';
+        let portfolio = [];
+        let marketInterval;
+        let orders = [];
+        let tradingStats = {
+            total: 0,
+            successful: 0,
+            failed: 0
+        };
+
+        // Tab switching
+        function switchTab(tab) {
+            // Hide all content
+            document.getElementById('dashboardContent').classList.add('hidden');
+            document.getElementById('calculatorContent').classList.add('hidden');
+            document.getElementById('portfolioContent').classList.add('hidden');
+            document.getElementById('tradingContent').classList.add('hidden');
+            document.getElementById('analysisContent').classList.add('hidden');
+            document.getElementById('learningContent').classList.add('hidden');
+            
+            // Remove active class from all tabs
+            document.getElementById('dashboardTab').classList.remove('bg-white/20');
+            document.getElementById('calculatorTab').classList.remove('bg-white/20');
+            document.getElementById('portfolioTab').classList.remove('bg-white/20');
+            document.getElementById('tradingTab').classList.remove('bg-white/20');
+            document.getElementById('analysisTab').classList.remove('bg-white/20');
+            document.getElementById('learningTab').classList.remove('bg-white/20');
+            
+            // Show selected content and activate tab
+            document.getElementById(tab + 'Content').classList.remove('hidden');
+            document.getElementById(tab + 'Tab').classList.add('bg-white/20');
+            
+            currentTab = tab;
+            
+            if (tab === 'dashboard') {
+                startMarketFeed();
+            } else {
+                stopMarketFeed();
+            }
+        }
+
+        // Trading Functions
+        function placeBuyOrder() {
+            const symbol = document.getElementById('buySymbol').value.trim().toUpperCase();
+            const quantity = parseFloat(document.getElementById('buyQuantity').value) || 0;
+            const price = parseFloat(document.getElementById('buyPrice').value) || 0;
+            
+            if (!symbol || quantity <= 0 || price <= 0) {
+                showNotification('Please fill all fields with valid values', 'error');
                 return;
             }
-
-            // Calculate required daily growth rate
-            const totalGrowthRate = target / initial;
-            const dailyGrowthRate = Math.pow(totalGrowthRate, 1/days);
-            const monthlyRate = (Math.pow(dailyGrowthRate, 30) - 1) * 100;
-            const totalProfit = target - initial;
-
-            // Display results
-            document.getElementById('monthlyRate').textContent = monthlyRate.toFixed(2) + '%';
-            document.getElementById('totalProfit').textContent = '$' + totalProfit.toFixed(2);
-            document.getElementById('finalAmount').textContent = '$' + target.toFixed(2);
-
-            // Show results card
-            document.getElementById('resultsCard').classList.remove('hidden');
-
-            // Animate progress bar
-            setTimeout(() => {
-                const progressPercent = ((target - initial) / initial * 100).toFixed(1);
-                document.getElementById('progressPercent').textContent = progressPercent + '%';
-                document.getElementById('progressBar').style.width = Math.min(100, progressPercent) + '%';
-            }, 300);
-
-            // Generate timeline
-            generateTimeline(initial, target, days, dailyGrowthRate);
+            
+            const order = {
+                id: Date.now(),
+                type: 'BUY',
+                symbol: symbol,
+                quantity: quantity,
+                price: price,
+                total: quantity * price,
+                timestamp: new Date().toLocaleString(),
+                status: Math.random() > 0.2 ? 'Executed' : 'Failed'
+            };
+            
+            orders.unshift(order);
+            updateOrderHistory();
+            updateTradingStats();
+            
+            // Clear inputs
+            document.getElementById('buySymbol').value = '';
+            document.getElementById('buyQuantity').value = '';
+            document.getElementById('buyPrice').value = '';
+            
+            // Show success message
+            showNotification(`${order.status}: ${order.type} ${order.quantity} ${order.symbol} @ $${order.price}`, order.status === 'Executed' ? 'success' : 'error');
         }
 
-        function generateTimeline(initial, target, days, dailyRate) {
-            const timeline = document.getElementById('timeline');
-            timeline.innerHTML = '';
-
-            const milestones = [0, Math.floor(days * 0.25), Math.floor(days * 0.5), Math.floor(days * 0.75), days];
+        function placeSellOrder() {
+            const symbol = document.getElementById('sellSymbol').value.trim().toUpperCase();
+            const quantity = parseFloat(document.getElementById('sellQuantity').value) || 0;
+            const price = parseFloat(document.getElementById('sellPrice').value) || 0;
             
-            milestones.forEach(day => {
-                const amount = initial * Math.pow(dailyRate, day);
-                const div = document.createElement('div');
-                div.className = 'flex justify-between items-center p-3 bg-gray-50 rounded-lg';
-                div.innerHTML = `
-                    <span class="text-gray-700">Day ${day}:</span>
-                    <span class="font-bold text-green-600">$${amount.toFixed(2)}</span>
+            if (!symbol || quantity <= 0 || price <= 0) {
+                showNotification('Please fill all fields with valid values', 'error');
+                return;
+            }
+            
+            const order = {
+                id: Date.now(),
+                type: 'SELL',
+                symbol: symbol,
+                quantity: quantity,
+                price: price,
+                total: quantity * price,
+                timestamp: new Date().toLocaleString(),
+                status: Math.random() > 0.15 ? 'Executed' : 'Failed'
+            };
+            
+            orders.unshift(order);
+            updateOrderHistory();
+            updateTradingStats();
+            
+            // Clear inputs
+            document.getElementById('sellSymbol').value = '';
+            document.getElementById('sellQuantity').value = '';
+            document.getElementById('sellPrice').value = '';
+            
+            // Show success message
+            showNotification(`${order.status}: ${order.type} ${order.quantity} ${order.symbol} @ $${order.price}`, order.status === 'Executed' ? 'success' : 'error');
+        }
+
+        function updateOrderHistory() {
+            const historyDiv = document.getElementById('orderHistory');
+            
+            if (orders.length === 0) {
+                historyDiv.innerHTML = '<p class="text-white/60 text-center py-8">No orders placed yet</p>';
+                return;
+            }
+            
+            const ordersHTML = orders.slice(0, 10).map(order => {
+                const statusColor = order.status === 'Executed' ? 'text-green-300' : 'text-red-300';
+                const typeColor = order.type === 'BUY' ? 'text-green-400' : 'text-red-400';
+                const typeIcon = order.type === 'BUY' ? '📈' : '📉';
+                
+                return `
+                    <div class="flex justify-between items-center bg-white/5 rounded-lg p-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xl">${typeIcon}</span>
+                            <div>
+                                <h4 class="text-white font-bold">${order.symbol}</h4>
+                                <p class="text-white/60 text-sm">${order.timestamp}</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="${typeColor} font-bold">${order.type} ${order.quantity}</p>
+                            <p class="text-white text-sm">$${order.price.toFixed(2)}</p>
+                            <p class="${statusColor} text-xs">${order.status}</p>
+                        </div>
+                    </div>
                 `;
-                timeline.appendChild(div);
-            });
-
-            document.getElementById('timelineCard').classList.remove('hidden');
+            }).join('');
+            
+            historyDiv.innerHTML = ordersHTML;
         }
 
-        function setExample(initial, days, target) {
-            document.getElementById('initialAmount').value = initial;
-            document.getElementById('days').value = days;
-            document.getElementById('targetAmount').value = target;
-            calculateInvestment();
+        function updateTradingStats() {
+            tradingStats.total = orders.length;
+            tradingStats.successful = orders.filter(order => order.status === 'Executed').length;
+            tradingStats.failed = orders.filter(order => order.status === 'Failed').length;
+            
+            const successRate = tradingStats.total > 0 ? ((tradingStats.successful / tradingStats.total) * 100).toFixed(1) : 0;
+            
+            document.getElementById('totalTrades').textContent = tradingStats.total;
+            document.getElementById('successfulTrades').textContent = tradingStats.successful;
+            document.getElementById('failedTrades').textContent = tradingStats.failed;
+            document.getElementById('successRate').textContent = successRate + '%';
         }
 
-        // Auto-calculate on input change
-        document.getElementById('initialAmount').addEventListener('input', () => {
-            if (document.getElementById('initialAmount').value && 
-                document.getElementById('days').value && 
-                document.getElementById('targetAmount').value) {
-                calculateInvestment();
-                calculateHourlyRate();
-            }
-        });
-
-        document.getElementById('days').addEventListener('input', () => {
-            if (document.getElementById('initialAmount').value && 
-                document.getElementById('days').value && 
-                document.getElementById('targetAmount').value) {
-                calculateInvestment();
-                calculateHourlyRate();
-            }
-        });
-
-        document.getElementById('targetAmount').addEventListener('input', () => {
-            if (document.getElementById('initialAmount').value && 
-                document.getElementById('days').value && 
-                document.getElementById('targetAmount').value) {
-                calculateInvestment();
-                calculateHourlyRate();
-            }
-        });
-
-        // Initial calculation
-        calculateInvestment();
-
-        // Earnings Generator Variables
-        let earningsInterval;
-        let isEarning = false;
-        let currentBalance = 0;
-        let earningsCount = 0;
-        let startTime = null;
-        let targetHourlyRate = 0;
-
-        const earningsSources = [
-            { name: "Trading Bot", emoji: "🤖" },
-            { name: "Crypto Mining", emoji: "⛏️" },
-            { name: "Stock Dividend", emoji: "📈" },
-            { name: "Forex Trade", emoji: "💱" },
-            { name: "NFT Sale", emoji: "🎨" },
-            { name: "Affiliate Commission", emoji: "🤝" },
-            { name: "Yield Farming", emoji: "🌾" },
-            { name: "Options Trade", emoji: "📊" }
-        ];
-
-        function calculateHourlyRate() {
-            const initial = parseFloat(document.getElementById('initialAmount').value) || 100;
-            const target = parseFloat(document.getElementById('targetAmount').value) || 270;
-            const days = parseInt(document.getElementById('days').value) || 120;
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 p-4 rounded-lg text-white font-bold z-50 ${
+                type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            }`;
+            notification.textContent = message;
             
-            const totalProfit = target - initial;
-            const totalHours = days * 24; // 120 days = 2,880 hours
-            targetHourlyRate = totalProfit / totalHours;
+            document.body.appendChild(notification);
             
-            // Update hourly rate display
-            document.getElementById('hourlyRateDisplay').textContent = 
-                `Hourly Rate: $${targetHourlyRate.toFixed(4)}/hour (${days} days = ${totalHours.toLocaleString()} hours)`;
-            
-            return targetHourlyRate;
-        }
-
-        function toggleEarnings() {
-            const btn = document.getElementById('earningsBtn');
-            const display = document.getElementById('earningsDisplay');
-            
-            if (!isEarning) {
-                // Calculate realistic hourly rate
-                calculateHourlyRate();
-                
-                // Start earning
-                isEarning = true;
-                startTime = Date.now();
-                btn.textContent = 'Stop Earning';
-                btn.className = 'bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105';
-                display.classList.remove('hidden');
-                
-                // Generate earnings every 2-8 seconds
-                earningsInterval = setInterval(generateEarning, getRandomInterval());
-            } else {
-                // Stop earning
-                isEarning = false;
-                btn.textContent = 'Start Earning';
-                btn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105';
-                clearInterval(earningsInterval);
-            }
-        }
-
-        function generateEarning() {
-            if (!isEarning) return;
-            
-            // Calculate how much time has passed in real hours
-            const currentTime = Date.now();
-            const hoursElapsed = (currentTime - startTime) / (1000 * 60 * 60);
-            
-            // Calculate expected earnings based on real time
-            const expectedEarnings = hoursElapsed * targetHourlyRate;
-            
-            // If we're behind, generate a larger earning to catch up
-            const earningDeficit = expectedEarnings - currentBalance;
-            
-            const source = earningsSources[Math.floor(Math.random() * earningsSources.length)];
-            
-            // Generate earning amount based on deficit and some randomness
-            let amount;
-            if (earningDeficit > 0) {
-                // We're behind, generate larger amounts
-                amount = Math.max(0.01, earningDeficit * (0.1 + Math.random() * 0.3));
-            } else {
-                // We're on track, generate smaller amounts
-                amount = targetHourlyRate * (0.01 + Math.random() * 0.05);
-            }
-            
-            const roundedAmount = Math.round(amount * 100) / 100;
-            
-            currentBalance += roundedAmount;
-            earningsCount++;
-            
-            // Update balance display
-            document.getElementById('currentBalance').textContent = '$' + currentBalance.toFixed(2);
-            
-            // Add to earnings log
-            const log = document.getElementById('earningsLog');
-            const entry = document.createElement('div');
-            entry.className = 'flex justify-between items-center p-2 bg-white/10 rounded text-white text-sm animate-pulse';
-            entry.innerHTML = `
-                <span>${source.emoji} ${source.name}</span>
-                <span class="font-bold text-green-300">+$${roundedAmount.toFixed(2)}</span>
-            `;
-            
-            log.insertBefore(entry, log.firstChild);
-            
-            // Keep only last 8 entries
-            while (log.children.length > 8) {
-                log.removeChild(log.lastChild);
-            }
-            
-            // Remove pulse animation after 2 seconds
             setTimeout(() => {
-                entry.classList.remove('animate-pulse');
-            }, 2000);
+                notification.remove();
+            }, 3000);
+        }
+
+        // Advanced Calculator
+        function calculateAdvanced() {
+            const initial = parseFloat(document.getElementById('calcInitial').value) || 0;
+            const months = parseInt(document.getElementById('calcMonths').value) || 0;
+            const annualReturn = parseFloat(document.getElementById('calcReturn').value) || 0;
+            const monthlyContribution = parseFloat(document.getElementById('calcContribution').value) || 0;
             
-            // Set next earning interval
-            if (isEarning) {
-                clearInterval(earningsInterval);
-                earningsInterval = setInterval(generateEarning, getRandomInterval());
+            const monthlyRate = annualReturn / 100 / 12;
+            let balance = initial;
+            let totalContributions = initial;
+            
+            const breakdown = [];
+            
+            for (let i = 1; i <= months; i++) {
+                balance = balance * (1 + monthlyRate) + monthlyContribution;
+                totalContributions += monthlyContribution;
+                
+                if (i % 3 === 0 || i === months) {
+                    breakdown.push(`Month ${i}: $${balance.toFixed(2)}`);
+                }
+            }
+            
+            const totalProfit = balance - totalContributions;
+            const roi = (totalProfit / totalContributions) * 100;
+            
+            // Update results
+            document.getElementById('finalAmount').textContent = '$' + balance.toFixed(2);
+            document.getElementById('totalProfit').textContent = '$' + totalProfit.toFixed(2);
+            document.getElementById('roiPercent').textContent = roi.toFixed(1) + '%';
+            
+            // Update breakdown
+            const breakdownDiv = document.getElementById('monthlyBreakdown');
+            breakdownDiv.innerHTML = breakdown.map(item => `<div>${item}</div>`).join('');
+        }
+
+        // Portfolio Management
+        function addAsset() {
+            const name = document.getElementById('assetName').value.trim();
+            const amount = parseFloat(document.getElementById('assetAmount').value) || 0;
+            const price = parseFloat(document.getElementById('assetPrice').value) || 0;
+            
+            if (!name || amount <= 0 || price <= 0) {
+                showNotification('Please fill all fields with valid values', 'error');
+                return;
+            }
+            
+            const asset = {
+                name: name.toUpperCase(),
+                amount: amount,
+                price: price,
+                shares: amount / price,
+                id: Date.now()
+            };
+            
+            portfolio.push(asset);
+            updatePortfolioDisplay();
+            
+            // Clear inputs
+            document.getElementById('assetName').value = '';
+            document.getElementById('assetAmount').value = '';
+            document.getElementById('assetPrice').value = '';
+            
+            showNotification(`Added ${asset.name} to portfolio!`, 'success');
+        }
+
+        function updatePortfolioDisplay() {
+            const assetsDiv = document.getElementById('portfolioAssets');
+            
+            if (portfolio.length === 0) {
+                assetsDiv.innerHTML = '<p class="text-white/60 text-center py-8">No assets added yet. Add your first investment above!</p>';
+                return;
+            }
+            
+            let totalValue = 0;
+            let bestPerformer = { name: '', change: -Infinity };
+            let worstPerformer = { name: '', change: Infinity };
+            
+            const assetsHTML = portfolio.map(asset => {
+                const currentValue = asset.shares * asset.price;
+                const change = ((currentValue - asset.amount) / asset.amount) * 100;
+                totalValue += currentValue;
+                
+                if (change > bestPerformer.change) {
+                    bestPerformer = { name: asset.name, change: change };
+                }
+                if (change < worstPerformer.change) {
+                    worstPerformer = { name: asset.name, change: change };
+                }
+                
+                const changeColor = change >= 0 ? 'text-green-300' : 'text-red-300';
+                const changeIcon = change >= 0 ? '📈' : '📉';
+                
+                return `
+                    <div class="flex justify-between items-center bg-white/5 rounded-xl p-4">
+                        <div>
+                            <h4 class="text-white font-bold">${changeIcon} ${asset.name}</h4>
+                            <p class="text-white/60 text-sm">${asset.shares.toFixed(4)} shares @ $${asset.price.toFixed(2)}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-white font-bold">$${currentValue.toFixed(2)}</p>
+                            <p class="${changeColor} text-sm">${change >= 0 ? '+' : ''}${change.toFixed(2)}%</p>
+                        </div>
+                        <button onclick="removeAsset(${asset.id})" class="ml-4 text-red-400 hover:text-red-300">🗑️</button>
+                    </div>
+                `;
+            }).join('');
+            
+            assetsDiv.innerHTML = assetsHTML;
+            
+            // Update summary
+            document.getElementById('totalAssets').textContent = portfolio.length;
+            document.getElementById('portfolioValue').textContent = '$' + totalValue.toFixed(2);
+            document.getElementById('bestPerformer').textContent = bestPerformer.name || '-';
+            document.getElementById('worstPerformer').textContent = worstPerformer.name || '-';
+        }
+
+        function removeAsset(id) {
+            portfolio = portfolio.filter(asset => asset.id !== id);
+            updatePortfolioDisplay();
+            showNotification('Asset removed from portfolio', 'success');
+        }
+
+        // Market Feed Simulation
+        function startMarketFeed() {
+            const symbols = ['AAPL', 'GOOGL', 'MSFT', 'TSLA', 'AMZN', 'META', 'NVDA', 'BTC', 'ETH', 'SPY'];
+            const feedDiv = document.getElementById('marketFeed');
+            
+            marketInterval = setInterval(() => {
+                const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+                const price = (Math.random() * 1000 + 50).toFixed(2);
+                const change = (Math.random() * 10 - 5).toFixed(2);
+                const changePercent = (Math.random() * 5 - 2.5).toFixed(2);
+                const isPositive = parseFloat(change) >= 0;
+                
+                const entry = document.createElement('div');
+                entry.className = 'flex justify-between items-center bg-white/5 rounded-lg p-3 animate-pulse';
+                entry.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">${isPositive ? '📈' : '📉'}</span>
+                        <div>
+                            <h4 class="text-white font-bold">${symbol}</h4>
+                            <p class="text-white/60 text-sm">Live Price</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-white font-bold">$${price}</p>
+                        <p class="${isPositive ? 'text-green-300' : 'text-red-300'} text-sm">
+                            ${isPositive ? '+' : ''}${change} (${isPositive ? '+' : ''}${changePercent}%)
+                        </p>
+                    </div>
+                `;
+                
+                feedDiv.insertBefore(entry, feedDiv.firstChild);
+                
+                // Keep only last 10 entries
+                while (feedDiv.children.length > 10) {
+                    feedDiv.removeChild(feedDiv.lastChild);
+                }
+                
+                // Remove pulse after 3 seconds
+                setTimeout(() => {
+                    entry.classList.remove('animate-pulse');
+                }, 3000);
+                
+            }, 2000);
+        }
+
+        function stopMarketFeed() {
+            if (marketInterval) {
+                clearInterval(marketInterval);
             }
         }
 
-        function getRandomInterval() {
-            // Random interval between 2-8 seconds (2000-8000ms)
-            return Math.floor(Math.random() * 6000) + 2000;
-        }
+        // Initialize
+        calculateAdvanced();
+        startMarketFeed();
+        
+        // Auto-calculate on input change
+        ['calcInitial', 'calcMonths', 'calcReturn', 'calcContribution'].forEach(id => {
+            document.getElementById(id).addEventListener('input', calculateAdvanced);
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d411f3e0ddddd1',t:'MTc1NDg3NjkwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d423191673ddd1',t:'MTc1NDg3NzYwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
-
 </div>
 
 <script>
