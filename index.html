@@ -1,928 +1,983 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CryiptoEarn</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-  body {
-    margin: 0; padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #f0f0f5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  /* Navbar */
-  nav {
-    background: rgba(30, 30, 40, 0.85);
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  }
-  nav a {
-    color: #ddd;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 8px 18px;
-    border-radius: 25px;
-    transition: background 0.3s ease;
-  }
-  nav a:hover, nav a.active {
-    background: #6c63ff;
-    color: #fff;
-    box-shadow: 0 0 8px #6c63ffaa;
-  }
-
-  /* Main container */
-  .container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 0.1em;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  }
-  p.subtitle {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    font-size: 1.15rem;
-    letter-spacing: 0.05em;
-  }
-
-  .address-box {
-    background: rgba(255,255,255,0.15);
-    padding: 25px 20px;
-    border-radius: 12px;
-    font-family: 'Courier New', monospace;
-    font-size: 1.4rem;
-    user-select: all;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
-    margin-bottom: 30px;
-    max-width: 400px;
-    word-break: break-all;
-  }
-
-  button.copy-btn {
-    background: #6c63ff;
-    border: none;
-    padding: 14px 35px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 4px 12px #6c63ffaa;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-  }
-  button.copy-btn:hover {
-    background: #5848c2;
-    box-shadow: 0 6px 18px #5848c2cc;
-  }
-
-  .support {
-    margin-top: 50px;
-    font-size: 1rem;
-    color: #dcdcdc;
-  }
-  .support a {
-    color: #ffdd57;
-    text-decoration: none;
-    font-weight: 700;
-  }
-  .support a:hover {
-    text-decoration: underline;
-  }
-
-  /* Content sections hidden by default */
-  .section {
-    display: none;
-  }
-  .section.active {
-    display: block;
-  }
-
-  /* Responsive */
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 2rem;
-    }
-    .address-box {
-      font-size: 1.1rem;
-      padding: 20px 15px;
-    }
-    button.copy-btn {
-      padding: 12px 28px;
-      font-size: 0.9rem;
-    }
-    nav {
-      gap: 15px;
-      padding: 10px 0;
-    }
-    nav a {
-      padding: 6px 12px;
-      font-size: 0.9rem;
-    }
-  }
-</style>
-</head>
-<body>
-
-<nav>
-  <a href="#" class="nav-link active" data-section="wallet">Wallet</a>
-  <a href="#" class="nav-link" data-section="profile">Profile</a>
-  <a href="#" class="nav-link" data-section="referral">Referral</a>
-  <a href="#" class="nav-link" data-section="menu">Menu</a>
-</nav>
-
-<div class="container">
-  <div id="wallet" class="section active">
-    <h1>Wallet</h1>
-    <p class="subtitle">Minimum deposit: <strong>$10</strong></p>
-    <div class="address-box" id="usdt-address">TJu2Dsrv4FA1cV4yUWTzbyFUqxX5hoHkec</div>
-    <button class="copy-btn" onclick="copyAddress()">Copy USDT Address</button>
-    <p class="support">
-      After sending, contact support:<br />
-      <a href="https://t.me/CryiptoEarnOficiall_support" target="_blank">@CryiptoEarnOficiall_support</a>
-    </p>
-  </div>
-
-  <div id="profile" class="section">
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mini App Wallet</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-  </style>
-</head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-
-  <div class="max-w-md w-full bg-white rounded-lg shadow-lg flex flex-col">
-
-    <!-- Header -->
-    <header class="bg-gray-800 text-white p-6 rounded-t-lg flex items-center space-x-4">
-      <div class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center text-xl font-semibold">👤</div>
-      <div>
-        <h1 class="text-lg font-semibold">Armen Vardanyan</h1>
-        <p class="text-gray-300 text-sm">USDT TRC-20 Wallet</p>
-      </div>
-    </header>
-
-    <!-- Balance -->
-    <section class="p-6 flex flex-col items-center border-b border-gray-200">
-      <div class="flex items-center space-x-2 mb-2">
-        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">$</div>
-        <h2 class="text-gray-600 font-medium">Available Balance</h2>
-      </div>
-      <div id="balance" class="text-4xl font-bold text-gray-800">0$</div>
-    </section>
-
-    <!-- Actions -->
-    <section class="p-6">
-      <button id="withdrawBtn" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg font-semibold transition-colors">
-        Withdraw
-      </button>
-    </section>
-
-  </div>
-
-  <!-- Withdraw Modal -->
-  <div id="withdrawModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg max-w-sm w-full p-6">
-      <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xl font-semibold text-gray-800">Withdraw USDT</h3>
-        <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">×</button>
-      </div>
-
-      <div class="space-y-4">
-        <div>
-          <label for="recipientAddress" class="block text-gray-700 font-medium mb-2">Recipient Address</label>
-          <input type="text" id="recipientAddress" placeholder="TRC-20 Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" />
-        </div>
-
-        <div>
-          <label for="withdrawAmount" class="block text-gray-700 font-medium mb-2">Amount</label>
-          <div class="relative">
-            <input
-              type="number"
-              id="withdrawAmount"
-              placeholder="0.00"
-              min="100"
-              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent pr-16"
-            />
-            <span class="absolute right-3 top-3 text-gray-500">USDT</span>
-          </div>
-          <p class="text-gray-500 text-sm mt-1">Minimum withdrawal: 100 USDT</p>
-        </div>
-
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between text-sm mb-2">
-            <span class="text-gray-600">Network Fee:</span>
-            <span class="text-gray-800">1.00 USDT</span>
-          </div>
-          <div class="flex justify-between text-sm font-semibold">
-            <span class="text-gray-700">You'll receive:</span>
-            <span id="receiveAmount" class="text-gray-800">0.00 USDT</span>
-          </div>
-        </div>
-
-        <div class="flex space-x-3 pt-4">
-          <button id="cancelBtn" class="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors">
-            Cancel
-          </button>
-          <button id="confirmWithdrawBtn" class="flex-1 py-3 px-4 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors">
-            Withdraw
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<script>
-  // Elements
-  const withdrawBtn = document.getElementById('withdrawBtn');
-  const withdrawModal = document.getElementById('withdrawModal');
-  const closeModalBtn = document.getElementById('closeModalBtn');
-  const cancelBtn = document.getElementById('cancelBtn');
-  const confirmWithdrawBtn = document.getElementById('confirmWithdrawBtn');
-  const withdrawAmountInput = document.getElementById('withdrawAmount');
-  const recipientAddressInput = document.getElementById('recipientAddress');
-  const receiveAmountSpan = document.getElementById('receiveAmount');
-  const balanceElem = document.getElementById('balance');
-
-  let balance = 500.00;
-  const fee = 1.00;
-  const minWithdrawal = 100;
-
-  // Open modal
-  withdrawBtn.addEventListener('click', () => {
-    withdrawModal.classList.remove('hidden');
-    withdrawAmountInput.value = '';
-    recipientAddressInput.value = '';
-    receiveAmountSpan.textContent = '0.00 USDT';
-  });
-
-  // Close modal
-  function closeModal() {
-    withdrawModal.classList.add('hidden');
-  }
-  closeModalBtn.addEventListener('click', closeModal);
-  cancelBtn.addEventListener('click', closeModal);
-
-  // Update receive amount
-  withdrawAmountInput.addEventListener('input', () => {
-    let amount = parseFloat(withdrawAmountInput.value);
-    if (isNaN(amount) || amount < minWithdrawal) {
-      receiveAmountSpan.textContent = '0.00 USDT';
-      return;
-    }
-    let receive = amount - fee;
-    if (receive < 0) receive = 0;
-    receiveAmountSpan.textContent = receive.toFixed(2) + ' USDT';
-  });
-
-  // Process withdrawal
-  confirmWithdrawBtn.addEventListener('click', () => {
-    const amount = parseFloat(withdrawAmountInput.value);
-    const address = recipientAddressInput.value.trim();
-
-    if (!address) {
-      alert('Please enter a recipient TRC-20 address.');
-      return;
-    }
-    if (isNaN(amount) || amount < minWithdrawal) {
-      alert(`Minimum withdrawal amount is ${minWithdrawal} USDT.`);
-      return;
-    }
-    if (amount + fee > balance) {
-      alert('Insufficient balance.');
-      return;
-    }
-
-    balance -= (amount + fee);
-    balanceElem.textContent = balance.toFixed(2) + ' $';
-
-    alert(`Withdrawal of ${amount.toFixed(2)} USDT to address ${address} initiated.`);
-
-    closeModal();
-  });
-</script>
-
-</body>
-</html>
-
-
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-xl max-w-sm w-full p-6 text-center">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span class="text-green-600 text-2xl">✓</span>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Withdrawal Successful!</h3>
-            <p class="text-gray-600 mb-6">Your USDT has been sent successfully. Transaction will be confirmed on the blockchain shortly.</p>
-            <button onclick="closeSuccessModal()" class="w-full py-3 px-4 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors">
-                Done
-            </button>
-        </div>
-    </div>
-
-    <script>
-        function openWithdrawModal() {
-            document.getElementById('withdrawModal').classList.remove('hidden');
-            document.getElementById('withdrawModal').classList.add('flex');
-        }
-
-        function closeWithdrawModal() {
-            document.getElementById('withdrawModal').classList.add('hidden');
-            document.getElementById('withdrawModal').classList.remove('flex');
-            // Clear form
-            document.getElementById('recipientAddress').value = '';
-            document.getElementById('withdrawAmount').value = '';
-            document.getElementById('receiveAmount').textContent = '0.00 USDT';
-        }
-
-        function closeSuccessModal() {
-            document.getElementById('successModal').classList.add('hidden');
-            document.getElementById('successModal').classList.remove('flex');
-        }
-
-        function processWithdraw() {
-            const address = document.getElementById('recipientAddress').value;
-            const amount = parseFloat(document.getElementById('withdrawAmount').value);
-            
-            if (!address || !amount || amount <= 0) {
-                alert('Please enter a valid address and amount');
-                return;
-            }
-            
-            if (amount < 100) {
-                alert('Minimum withdrawal amount is $100.00');
-                return;
-            }
-            
-            const currentBalance = parseFloat(document.getElementById('balance').textContent.replace(',', ''));
-            if (amount + 1 > currentBalance) { // +1 for fee
-                alert('Insufficient balance');
-                return;
-            }
-            
-            // Simulate withdrawal processing
-            closeWithdrawModal();
-            
-            // Update balance
-            const newBalance = currentBalance - amount - 1; // subtract amount + fee
-            document.getElementById('balance').textContent = newBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            document.getElementById('availableBalance').textContent = newBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            
-            // Show success modal
-            setTimeout(() => {
-                document.getElementById('successModal').classList.remove('hidden');
-                document.getElementById('successModal').classList.add('flex');
-            }, 500);
-        }
-
-        // Update receive amount when withdraw amount changes
-        document.getElementById('withdrawAmount').addEventListener('input', function() {
-            const amount = parseFloat(this.value) || 0;
-            const receiveAmount = Math.max(0, amount - 1); // subtract fee
-            document.getElementById('receiveAmount').textContent = receiveAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' USDT';
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d3391d61ab728e',t:'MTc1NDg2ODAxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
-
-  </div>
-
-  <div id="referral" class="section">
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Your Referral Bonuses</h2>
-    <div class="bonus-item" id="referralCount">Referred friends: 0</div>
-    <div class="bonus-item" id="totalBonus">Total bonus earned: $0</div>
-
-    <div class="bonus-item">
-      ✔ Earn $2 per referred friend<br>
-      ✔ Earn $3 after Instagram follow<br>
-      ✔ Earn $2 after Telegram channel join
-    </div>
-
-    <div class="links">
-      <a href="https://www.instagram.com/isahak__vardanyan/">Instagram</a>
-      <a href="https://t.me/CryiptoEarnOficial">Telegram</a>
-    </div>
-  </div>
-
-  <script>
-    // Simulate referral data (replace with real data)
-    const referredFriends = 5; // Example number of referrals
-    const instagramBonus = 3;  // $3 bonus after Instagram follow
-    const telegramBonus = 2;   // $2 bonus after Telegram join
-    const perFriendBonus = 2;  // $2 per referred friend
-
-    // Calculate total bonus
-    const totalBonus = (referredFriends * perFriendBonus) + instagramBonus + telegramBonus;
-
-    // Update the page
-    document.getElementById("referralCount").textContent = `Referred friends: ${referredFriends}`;
-    document.getElementById("totalBonus").textContent = `Total bonus earned: $${totalBonus}`;
-  </script>
-</body>
-</html>
-  </div>
-  <div id="menu" class="section">
-<!DOCTYPE html>
-<html lang="hy">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Mini App</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Crypto Investment Platform</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .card-shadow { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-        .progress-bar { transition: width 0.5s ease-in-out; }
-        .pulse-animation { animation: pulse 2s infinite; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .balance-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .balance-amount {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #10b981;
+            text-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .balance-label {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            padding: 16px 24px;
+            border: none;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            color: white;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+        }
+
+        .btn-deposit {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .btn-withdraw {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        .investment-section {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .investment-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .investment-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .investment-option {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .starter-plan {
+            border: 2px solid #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .pro-plan {
+            border: 2px solid #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .vip-plan {
+            border: 2px solid #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .investment-option:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .starter-plan:hover {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: #16a34a;
+        }
+
+        .pro-plan:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #2563eb;
+        }
+
+        .vip-plan:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #dc2626;
+        }
+
+        .investment-option.selected {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .starter-plan.selected {
+            background: rgba(34, 197, 94, 0.3);
+            border-color: #15803d;
+        }
+
+        .pro-plan.selected {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: #1d4ed8;
+        }
+
+        .vip-plan.selected {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: #b91c1c;
+        }
+
+        .option-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .option-details {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .referral-section {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .referral-code {
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+            padding: 18px;
+            border-radius: 16px;
+            text-align: center;
+            font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            letter-spacing: 2px;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .referral-code::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4ade80;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+
+
+        .navigation {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .nav-btn {
+            padding: 12px 8px;
+            border: none;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            color: white;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-1px);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.12));
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-color: #10b981;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .support-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .support-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, #10b981, #059669);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .support-status::before {
+            content: '🟢';
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        .contact-methods {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        .telegram-btn {
+            background: linear-gradient(135deg, #0088cc, #006699);
+            box-shadow: 0 4px 16px rgba(0, 136, 204, 0.3);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+        }
+
+        .email-btn {
+            background: linear-gradient(135deg, #ea4335, #d33b2c);
+            box-shadow: 0 4px 16px rgba(234, 67, 53, 0.3);
+        }
+
+        .live-chat-btn {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .response-time {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
         }
     </style>
 </head>
-<body class="gradient-bg min-h-screen py-8 px-4">
-    <div class="max-w-md mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-white mb-2">💰 Investment Calculator</h1>
-            <p class="text-white/80">Calculate your investment growth</p>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">💎</div>
+            <h1>Crypto Investment</h1>
+            <p>Professional Trading Platform</p>
         </div>
 
-        <!-- Investment Calculator Card -->
-        <div class="bg-white rounded-2xl card-shadow p-6 mb-6">
-            <div class="mb-6">
-                <label class="block text-gray-700 font-medium mb-2">Initial Amount ($)</label>
-                <input type="number" id="initialAmount" value="100" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
-            </div>
-
-            <div class="mb-6">
-                <label class="block text-gray-700 font-medium mb-2">Time Period (days)</label>
-                <input type="number" id="days" value="120" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
-            </div>
-
-            <div class="mb-6">
-                <label class="block text-gray-700 font-medium mb-2">Target Amount ($)</label>
-                <input type="number" id="targetAmount" value="270" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
-            </div>
-
-            <button onclick="calculateInvestment()" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                Calculate Investment
+        <div class="navigation">
+            <button class="nav-btn active" onclick="showSection('referral')">
+                👥 Referral
+            </button>
+            <button class="nav-btn" onclick="showSection('investment')">
+                📈 Investment Plans
+            </button>
+            <button class="nav-btn" onclick="showSection('wallet')">
+                💳 Wallet
+            </button>
+            <button class="nav-btn" onclick="showSection('support')">
+                🎧 24/7 Support
             </button>
         </div>
 
-        <!-- Results Card -->
-        <div id="resultsCard" class="bg-white rounded-2xl card-shadow p-6 mb-6 hidden">
-            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📊 Results</h3>
-            
-            <div class="space-y-4">
-                <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                    <span class="text-gray-700">Monthly Rate:</span>
-                    <span id="monthlyRate" class="font-bold text-green-600"></span>
-                </div>
-                
-                <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                    <span class="text-gray-700">Total Profit:</span>
-                    <span id="totalProfit" class="font-bold text-blue-600"></span>
-                </div>
-                
-                <div class="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
-                    <span class="text-gray-700">Final Amount:</span>
-                    <span id="finalAmount" class="font-bold text-purple-600"></span>
-                </div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="mt-6">
-                <div class="flex justify-between text-sm text-gray-600 mb-2">
-                    <span>Progress</span>
-                    <span id="progressPercent">0%</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-3">
-                    <div id="progressBar" class="progress-bar bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full" style="width: 0%"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Investment Timeline -->
-        <div id="timelineCard" class="bg-white rounded-2xl card-shadow p-6 hidden">
-            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📈 Investment Timeline</h3>
-            <div id="timeline" class="space-y-3"></div>
-        </div>
-
-        <!-- Human-like Earnings Generator -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mt-6">
-            <h3 class="text-lg font-semibold text-white mb-4">💸 Live Earnings Generator</h3>
-            <div class="text-center mb-4">
-                <div class="text-sm text-white/80 mb-2" id="hourlyRateDisplay">
-                    Hourly Rate: $0.00/hour
-                </div>
-                <button id="earningsBtn" onclick="toggleEarnings()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
-                    Start Earning
+        <!-- Referral Section -->
+        <div class="section active" id="referralSection">
+            <div class="referral-section">
+                <h3 class="investment-title">👥 Referral Program</h3>
+                <p style="text-align: center; margin-bottom: 10px;">Your Referral Code:</p>
+                <div class="referral-code" id="referralCode">REF123456</div>
+                <button class="btn" style="width: 100%; background: linear-gradient(45deg, #06b6d4, #0891b2);" onclick="copyReferralCode()">
+                    📋 Copy Code
                 </button>
-            </div>
-            <div id="earningsDisplay" class="hidden">
-                <div class="bg-white/20 rounded-lg p-4 mb-4">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-white mb-2" id="currentBalance">$0.00</div>
-                        <div class="text-sm text-white/80">Current Balance</div>
+                
+                <div class="stats-grid" style="margin-top: 20px;">
+                    <div class="stat-card">
+                        <div class="stat-value" id="referrals">0</div>
+                        <div class="stat-label">Total Referrals</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="referralEarnings">$0.00</div>
+                        <div class="stat-label">Referral Earnings</div>
                     </div>
                 </div>
-                <div class="space-y-2" id="earningsLog"></div>
             </div>
         </div>
 
-        <!-- Quick Examples -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mt-6">
-            <h3 class="text-lg font-semibold text-white mb-4">🚀 Quick Examples</h3>
-            <div class="grid grid-cols-1 gap-3">
-                <button onclick="setExample(100, 120, 270)" class="text-left p-3 bg-white/20 rounded-lg text-white hover:bg-white/30 transition-colors">
-                    <div class="font-medium">$100 → $270</div>
-                    <div class="text-sm opacity-80">120 days, 170% profit</div>
+        <!-- Investment Plans Section -->
+        <div class="section" id="investmentSection">
+            <div class="investment-section">
+                <h3 class="investment-title">🚀 Investment Plans</h3>
+                <div class="investment-options">
+                    <div class="investment-option starter-plan" onclick="selectPlan(this, 5, 10)" data-plan="1">
+                        <div class="option-title">🟢 Starter Plan</div>
+                        <div class="option-details">Min: $5 | Daily: +10% | 6 days</div>
+                    </div>
+                    <div class="investment-option pro-plan" onclick="selectPlan(this, 50, 15)" data-plan="2">
+                        <div class="option-title">🔵 Pro Plan</div>
+                        <div class="option-details">Min: $50 | Daily: +15% | 6 days</div>
+                    </div>
+                    <div class="investment-option vip-plan" onclick="selectPlan(this, 250, 20)" data-plan="3">
+                        <div class="option-title">🔴 VIP Plan</div>
+                        <div class="option-details">Min: $250 | Daily: +20% | 6 days</div>
+                    </div>
+                </div>
+                <div class="input-group" style="margin-top: 15px;">
+                    <label class="input-label">Investment Amount ($)</label>
+                    <input type="number" class="input-field" id="investAmount" placeholder="Enter amount" min="5">
+                </div>
+                <button class="btn" style="width: 100%; background: linear-gradient(45deg, #8b5cf6, #7c3aed);" onclick="startInvestment()">
+                    🎯 Start Investment
                 </button>
-                <button onclick="setExample(500, 90, 1000)" class="text-left p-3 bg-white/20 rounded-lg text-white hover:bg-white/30 transition-colors">
-                    <div class="font-medium">$500 → $1000</div>
-                    <div class="text-sm opacity-80">90 days, 100% profit</div>
+                
+                <div class="stats-grid" style="margin-top: 20px;">
+                    <div class="stat-card">
+                        <div class="stat-value" id="activeInvestments">0</div>
+                        <div class="stat-label">Active Plans</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="dailyProfit">$0.00</div>
+                        <div class="stat-label">Daily Profit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support Section -->
+        <div class="section" id="supportSection">
+            <div class="support-card">
+                <h3 style="margin-bottom: 15px; font-size: 1.3rem;">🎧 24/7 Customer Support</h3>
+                <div class="support-status">
+                    Online Now - Ready to Help!
+                </div>
+                <p style="opacity: 0.9; margin-bottom: 20px;">
+                    Our professional support team is available around the clock to assist you with any questions or issues.
+                </p>
+                
+                <div class="contact-methods">
+                    <button class="contact-btn telegram-btn" onclick="openTelegram()">
+                        📱 Telegram Support
+                        <span style="font-size: 0.8rem; opacity: 0.8;">Instant Response</span>
+                    </button>
+                    
+                    <button class="contact-btn whatsapp-btn" onclick="openWhatsApp()">
+                        💬 WhatsApp Chat
+                        <span style="font-size: 0.8rem; opacity: 0.8;">Quick Help</span>
+                    </button>
+                    
+                    <button class="contact-btn email-btn" onclick="openEmail()">
+                        📧 Email Support
+                        <span style="font-size: 0.8rem; opacity: 0.8;">Detailed Assistance</span>
+                    </button>
+                    
+                    <button class="contact-btn live-chat-btn" onclick="openLiveChat()">
+                        💬 Live Chat
+                        <span style="font-size: 0.8rem; opacity: 0.8;">Real-time Help</span>
+                    </button>
+                </div>
+                
+                <div class="response-time">
+                    ⚡ Average Response Time: Under 2 minutes
+                </div>
+            </div>
+            
+            <div class="support-card">
+                <h4 style="margin-bottom: 15px;">📋 Common Questions</h4>
+                <div style="text-align: left;">
+                    <div style="margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <strong>💰 How to deposit funds?</strong><br>
+                        <span style="opacity: 0.8; font-size: 0.9rem;">Go to Wallet → Deposit → Enter amount → Confirm</span>
+                    </div>
+                    <div style="margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <strong>📈 How do investments work?</strong><br>
+                        <span style="opacity: 0.8; font-size: 0.9rem;">Choose a plan → Invest amount → Earn daily profits for 6 days</span>
+                    </div>
+                    <div style="margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <strong>👥 How to use referral code?</strong><br>
+                        <span style="opacity: 0.8; font-size: 0.9rem;">Share your code → Friends join → You earn bonus commissions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wallet Section -->
+        <div class="section" id="walletSection">
+            <div class="balance-card">
+                <div class="balance-amount" id="balance">$5.00</div>
+                <div class="balance-label">Available Balance (USDT)</div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-deposit" onclick="openModal('depositModal')">
+                    💰 Deposit
                 </button>
-                <button onclick="setExample(1000, 180, 2500)" class="text-left p-3 bg-white/20 rounded-lg text-white hover:bg-white/30 transition-colors">
-                    <div class="font-medium">$1000 → $2500</div>
-                    <div class="text-sm opacity-80">180 days, 150% profit</div>
+                <button class="btn btn-withdraw" onclick="openModal('withdrawModal')">
+                    💸 Withdraw
                 </button>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalEarnings">$0.00</div>
+                    <div class="stat-label">Total Earnings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalDeposits">$5.00</div>
+                    <div class="stat-label">Total Deposits</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        function calculateInvestment() {
-            const initial = parseFloat(document.getElementById('initialAmount').value);
-            const days = parseInt(document.getElementById('days').value);
-            const target = parseFloat(document.getElementById('targetAmount').value);
+    <!-- Deposit Modal -->
+    <div class="modal" id="depositModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('depositModal')">&times;</button>
+            <h3 style="margin-bottom: 20px; text-align: center;">💰 Deposit USDT</h3>
+            <div class="input-group">
+                <label class="input-label">Amount ($)</label>
+                <input type="number" class="input-field" id="depositAmount" placeholder="Minimum deposit: $5" min="5">
+            </div>
+            <button class="btn btn-deposit" style="width: 100%;" onclick="processDeposit()">
+                ✅ Confirm Deposit
+            </button>
+        </div>
+    </div>
 
-            if (!initial || !days || !target || initial <= 0 || days <= 0 || target <= initial) {
-                alert('Please enter valid values');
+    <!-- Withdraw Modal -->
+    <div class="modal" id="withdrawModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('withdrawModal')">&times;</button>
+            <h3 style="margin-bottom: 20px; text-align: center;">💸 Withdraw USDT</h3>
+            <div class="input-group">
+                <label class="input-label">Amount ($)</label>
+                <input type="number" class="input-field" id="withdrawAmount" placeholder="Enter withdraw amount" min="1">
+            </div>
+            <div class="input-group">
+                <label class="input-label">Your USDT Address</label>
+                <input type="text" class="input-field" id="withdrawAddress" placeholder="Enter your USDT wallet address">
+            </div>
+            <button class="btn btn-withdraw" style="width: 100%;" onclick="processWithdraw()">
+                🚀 Process Withdrawal
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let userData = {
+            balance: 5.00,
+            totalEarnings: 0,
+            referrals: 0,
+            activeInvestments: 0,
+            dailyProfit: 0,
+            referralEarnings: 0,
+            totalDeposits: 5.00,
+            investments: [],
+            referralCode: 'REF' + Math.random().toString(36).substr(2, 6).toUpperCase()
+        };
+
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName + 'Section').classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        let selectedPlan = null;
+
+        function updateDisplay() {
+            document.getElementById('balance').textContent = '$' + userData.balance.toFixed(2);
+            document.getElementById('totalEarnings').textContent = '$' + userData.totalEarnings.toFixed(2);
+            document.getElementById('referrals').textContent = userData.referrals;
+            document.getElementById('activeInvestments').textContent = userData.activeInvestments;
+            document.getElementById('dailyProfit').textContent = '$' + userData.dailyProfit.toFixed(2);
+            document.getElementById('referralEarnings').textContent = '$' + userData.referralEarnings.toFixed(2);
+            document.getElementById('totalDeposits').textContent = '$' + userData.totalDeposits.toFixed(2);
+            document.getElementById('referralCode').textContent = userData.referralCode;
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function selectPlan(element, minAmount, dailyPercent) {
+            document.querySelectorAll('.investment-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            selectedPlan = {
+                minAmount: minAmount,
+                dailyPercent: dailyPercent,
+                element: element
+            };
+            document.getElementById('investAmount').min = minAmount;
+            document.getElementById('investAmount').placeholder = `Min: $${minAmount}`;
+        }
+
+        function startInvestment() {
+            const amount = parseFloat(document.getElementById('investAmount').value);
+            
+            if (!selectedPlan) {
+                alert('Please select an investment plan first!');
+                return;
+            }
+            
+            if (!amount || amount < selectedPlan.minAmount) {
+                alert(`Minimum investment is $${selectedPlan.minAmount}`);
+                return;
+            }
+            
+            if (amount > userData.balance) {
+                alert('Insufficient balance!');
                 return;
             }
 
-            // Calculate required daily growth rate
-            const totalGrowthRate = target / initial;
-            const dailyGrowthRate = Math.pow(totalGrowthRate, 1/days);
-            const monthlyRate = (Math.pow(dailyGrowthRate, 30) - 1) * 100;
-            const totalProfit = target - initial;
-
-            // Display results
-            document.getElementById('monthlyRate').textContent = monthlyRate.toFixed(2) + '%';
-            document.getElementById('totalProfit').textContent = '$' + totalProfit.toFixed(2);
-            document.getElementById('finalAmount').textContent = '$' + target.toFixed(2);
-
-            // Show results card
-            document.getElementById('resultsCard').classList.remove('hidden');
-
-            // Animate progress bar
-            setTimeout(() => {
-                const progressPercent = ((target - initial) / initial * 100).toFixed(1);
-                document.getElementById('progressPercent').textContent = progressPercent + '%';
-                document.getElementById('progressBar').style.width = Math.min(100, progressPercent) + '%';
-            }, 300);
-
-            // Generate timeline
-            generateTimeline(initial, target, days, dailyGrowthRate);
+            userData.balance -= amount;
+            userData.activeInvestments++;
+            
+            const investment = {
+                amount: amount,
+                dailyPercent: selectedPlan.dailyPercent,
+                daysLeft: 6,
+                dailyProfit: (amount * selectedPlan.dailyPercent) / 100
+            };
+            
+            userData.investments.push(investment);
+            userData.dailyProfit += investment.dailyProfit;
+            
+            updateDisplay();
+            
+            alert(`Investment started! You'll earn $${investment.dailyProfit.toFixed(2)} daily for 6 days.`);
+            document.getElementById('investAmount').value = '';
+            
+            // Start daily profit simulation
+            simulateDailyProfits(investment);
         }
 
-        function generateTimeline(initial, target, days, dailyRate) {
-            const timeline = document.getElementById('timeline');
-            timeline.innerHTML = '';
+        function simulateDailyProfits(investment) {
+            const interval = setInterval(() => {
+                if (investment.daysLeft > 0) {
+                    userData.balance += investment.dailyProfit;
+                    userData.totalEarnings += investment.dailyProfit;
+                    investment.daysLeft--;
+                    
+                    if (investment.daysLeft === 0) {
+                        userData.activeInvestments--;
+                        userData.dailyProfit -= investment.dailyProfit;
+                        clearInterval(interval);
+                    }
+                    
+                    updateDisplay();
+                }
+            }, 5000); // Every 5 seconds for demo (would be daily in real app)
+        }
 
-            const milestones = [0, Math.floor(days * 0.25), Math.floor(days * 0.5), Math.floor(days * 0.75), days];
+        function processDeposit() {
+            const amount = parseFloat(document.getElementById('depositAmount').value);
             
-            milestones.forEach(day => {
-                const amount = initial * Math.pow(dailyRate, day);
-                const div = document.createElement('div');
-                div.className = 'flex justify-between items-center p-3 bg-gray-50 rounded-lg';
-                div.innerHTML = `
-                    <span class="text-gray-700">Day ${day}:</span>
-                    <span class="font-bold text-green-600">$${amount.toFixed(2)}</span>
-                `;
-                timeline.appendChild(div);
+            if (!amount || amount < 5) {
+                alert('Please enter a valid amount (minimum $5)');
+                return;
+            }
+            
+            // Instantly add the deposit amount to balance
+            userData.balance += amount;
+            userData.totalDeposits += amount;
+            updateDisplay();
+            closeModal('depositModal');
+            document.getElementById('depositAmount').value = '';
+            
+            // Show success message with confetti effect
+            alert(`✅ Deposit Successful!\n💰 $${amount.toFixed(2)} has been added to your balance!\n🎉 Your new balance: $${userData.balance.toFixed(2)}`);
+        }
+
+        function processWithdraw() {
+            const amount = parseFloat(document.getElementById('withdrawAmount').value);
+            const address = document.getElementById('withdrawAddress').value;
+            
+            if (!amount || amount < 1) {
+                alert('Please enter a valid amount (minimum $1)');
+                return;
+            }
+            
+            if (!address) {
+                alert('Please enter your USDT wallet address');
+                return;
+            }
+            
+            if (amount > userData.balance) {
+                alert('Insufficient balance!');
+                return;
+            }
+            
+            userData.balance -= amount;
+            updateDisplay();
+            closeModal('withdrawModal');
+            document.getElementById('withdrawAmount').value = '';
+            document.getElementById('withdrawAddress').value = '';
+            
+            alert(`Withdrawal of $${amount.toFixed(2)} to ${address.substring(0, 10)}... processed!`);
+        }
+
+        function copyReferralCode() {
+            navigator.clipboard.writeText(userData.referralCode).then(() => {
+                alert('Referral code copied to clipboard!');
             });
-
-            document.getElementById('timelineCard').classList.remove('hidden');
         }
 
-        function setExample(initial, days, target) {
-            document.getElementById('initialAmount').value = initial;
-            document.getElementById('days').value = days;
-            document.getElementById('targetAmount').value = target;
-            calculateInvestment();
+        function openTelegram() {
+            alert('🚀 Opening Telegram Support...\n\n📱 Contact: @CryptoInvestSupport\n⚡ Response time: Instant!');
+            // In real app: window.open('https://t.me/yoursupportbot', '_blank');
         }
 
-        // Auto-calculate on input change
-        document.getElementById('initialAmount').addEventListener('input', () => {
-            if (document.getElementById('initialAmount').value && 
-                document.getElementById('days').value && 
-                document.getElementById('targetAmount').value) {
-                calculateInvestment();
-                calculateHourlyRate();
-            }
-        });
-
-        document.getElementById('days').addEventListener('input', () => {
-            if (document.getElementById('initialAmount').value && 
-                document.getElementById('days').value && 
-                document.getElementById('targetAmount').value) {
-                calculateInvestment();
-                calculateHourlyRate();
-            }
-        });
-
-        document.getElementById('targetAmount').addEventListener('input', () => {
-            if (document.getElementById('initialAmount').value && 
-                document.getElementById('days').value && 
-                document.getElementById('targetAmount').value) {
-                calculateInvestment();
-                calculateHourlyRate();
-            }
-        });
-
-        // Initial calculation
-        calculateInvestment();
-
-        // Earnings Generator Variables
-        let earningsInterval;
-        let isEarning = false;
-        let currentBalance = 0;
-        let earningsCount = 0;
-        let startTime = null;
-        let targetHourlyRate = 0;
-
-        const earningsSources = [
-            { name: "Trading Bot", emoji: "🤖" },
-            { name: "Crypto Mining", emoji: "⛏️" },
-            { name: "Stock Dividend", emoji: "📈" },
-            { name: "Forex Trade", emoji: "💱" },
-            { name: "NFT Sale", emoji: "🎨" },
-            { name: "Affiliate Commission", emoji: "🤝" },
-            { name: "Yield Farming", emoji: "🌾" },
-            { name: "Options Trade", emoji: "📊" }
-        ];
-
-        function calculateHourlyRate() {
-            const initial = parseFloat(document.getElementById('initialAmount').value) || 100;
-            const target = parseFloat(document.getElementById('targetAmount').value) || 270;
-            const days = parseInt(document.getElementById('days').value) || 120;
-            
-            const totalProfit = target - initial;
-            const totalHours = days * 24; // 120 days = 2,880 hours
-            targetHourlyRate = totalProfit / totalHours;
-            
-            // Update hourly rate display
-            document.getElementById('hourlyRateDisplay').textContent = 
-                `Hourly Rate: $${targetHourlyRate.toFixed(4)}/hour (${days} days = ${totalHours.toLocaleString()} hours)`;
-            
-            return targetHourlyRate;
+        function openWhatsApp() {
+            alert('💬 Opening WhatsApp Support...\n\n📞 Number: +1-555-CRYPTO\n⚡ Response time: Under 5 minutes!');
+            // In real app: window.open('https://wa.me/1555CRYPTO', '_blank');
         }
 
-        function toggleEarnings() {
-            const btn = document.getElementById('earningsBtn');
-            const display = document.getElementById('earningsDisplay');
-            
-            if (!isEarning) {
-                // Calculate realistic hourly rate
-                calculateHourlyRate();
-                
-                // Start earning
-                isEarning = true;
-                startTime = Date.now();
-                btn.textContent = 'Stop Earning';
-                btn.className = 'bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105';
-                display.classList.remove('hidden');
-                
-                // Generate earnings every 2-8 seconds
-                earningsInterval = setInterval(generateEarning, getRandomInterval());
-            } else {
-                // Stop earning
-                isEarning = false;
-                btn.textContent = 'Start Earning';
-                btn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105';
-                clearInterval(earningsInterval);
-            }
+        function openEmail() {
+            alert('📧 Opening Email Support...\n\n✉️ Email: support@cryptoinvest.com\n⚡ Response time: Within 1 hour!');
+            // In real app: window.open('mailto:support@cryptoinvest.com', '_blank');
         }
 
-        function generateEarning() {
-            if (!isEarning) return;
-            
-            // Calculate how much time has passed in real hours
-            const currentTime = Date.now();
-            const hoursElapsed = (currentTime - startTime) / (1000 * 60 * 60);
-            
-            // Calculate expected earnings based on real time
-            const expectedEarnings = hoursElapsed * targetHourlyRate;
-            
-            // If we're behind, generate a larger earning to catch up
-            const earningDeficit = expectedEarnings - currentBalance;
-            
-            const source = earningsSources[Math.floor(Math.random() * earningsSources.length)];
-            
-            // Generate earning amount based on deficit and some randomness
-            let amount;
-            if (earningDeficit > 0) {
-                // We're behind, generate larger amounts
-                amount = Math.max(0.01, earningDeficit * (0.1 + Math.random() * 0.3));
-            } else {
-                // We're on track, generate smaller amounts
-                amount = targetHourlyRate * (0.01 + Math.random() * 0.05);
-            }
-            
-            const roundedAmount = Math.round(amount * 100) / 100;
-            
-            currentBalance += roundedAmount;
-            earningsCount++;
-            
-            // Update balance display
-            document.getElementById('currentBalance').textContent = '$' + currentBalance.toFixed(2);
-            
-            // Add to earnings log
-            const log = document.getElementById('earningsLog');
-            const entry = document.createElement('div');
-            entry.className = 'flex justify-between items-center p-2 bg-white/10 rounded text-white text-sm animate-pulse';
-            entry.innerHTML = `
-                <span>${source.emoji} ${source.name}</span>
-                <span class="font-bold text-green-300">+$${roundedAmount.toFixed(2)}</span>
-            `;
-            
-            log.insertBefore(entry, log.firstChild);
-            
-            // Keep only last 8 entries
-            while (log.children.length > 8) {
-                log.removeChild(log.lastChild);
-            }
-            
-            // Remove pulse animation after 2 seconds
-            setTimeout(() => {
-                entry.classList.remove('animate-pulse');
-            }, 2000);
-            
-            // Set next earning interval
-            if (isEarning) {
-                clearInterval(earningsInterval);
-                earningsInterval = setInterval(generateEarning, getRandomInterval());
-            }
+        function openLiveChat() {
+            alert('💬 Starting Live Chat...\n\n🎧 Connecting you to our support team...\n⚡ Please wait while we connect you!');
+            // In real app: open live chat widget
         }
 
-        function getRandomInterval() {
-            // Random interval between 2-8 seconds (2000-8000ms)
-            return Math.floor(Math.random() * 6000) + 2000;
+        // Simulate referral earnings
+        setInterval(() => {
+            if (Math.random() < 0.1) { // 10% chance every 10 seconds
+                userData.referrals++;
+                const bonus = Math.random() * 5 + 1; // $1-6 bonus
+                userData.balance += bonus;
+                userData.totalEarnings += bonus;
+                userData.referralEarnings += bonus;
+                updateDisplay();
+            }
+        }, 10000);
+
+        // Initialize display
+        updateDisplay();
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d44989b58addce',t:'MTc1NDg3OTE3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
-</div>
-
-<script>
-  function copyAddress() {
-    const address = document.getElementById('usdt-address').textContent;
-    navigator.clipboard.writeText(address).then(() => {
-      alert('Address copied to clipboard!');
-    }).catch(() => {
-      alert('Copy failed, please copy manually.');
-    });
-  }
-
-  // Nav link click handler - show corresponding section
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = e.target.getAttribute('data-section');
-      // Remove active from all links
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      // Add active to clicked
-      e.target.classList.add('active');
-      // Hide all sections
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      // Show target section
-      document.getElementById(target).classList.add('active');
-    });
-  });
-</script>
-
-</body>
-</html>
-<script>
-  // Օրինակ օգտատեր ID-ն կարող ես ուղարկել URL կամ Telegram login-ից ստանալ
-  const userId = "123456"
-
-  fetch(`http://localhost:5000/api/referral/${userId}`)
-    .then(response => response.json())
-    .then(data => {
-      if(data.error) {
-        document.getElementById("referralCount").textContent = data.error;
-        document.getElementById("totalBonus").textContent = "";
-        return;
-      }
-      document.getElementById("referralCount").textContent = `Referred friends: ${data.referredFriends}`;
-      document.getElementById("totalBonus").textContent = `Total bonus earned: $${data.totalBonus}`;
-    })
-    .catch(err => {
-      document.getElementById("referralCount").textContent = "Failed to load data.";
-      console.error(err);
-    });
-</script>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Referral Bonuses</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #7b5fff, #b75fff);
-      color: #fff;
-      margin: 0;
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 380px;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 30px 25px;
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      text-align: center;
-      backdrop-filter: blur(8px);
-    }
-    h2 {
-      color: #ffd6ff;
-      margin-bottom: 22px;
-      font-weight: 700;
-      text-shadow: 0 2px 8px rgba(123, 95, 255, 0.7);
-    }
-    .bonus-item {
-      font-size: 18px;
-      margin: 14px 0;
-      line-height: 1.4;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    }
-    .links {
-      margin-top: 30px;
-    }
-    .links a {
-      display: inline-block;
-      margin: 0 14px;
-      padding: 12px 26px;
-      background-color: #9a66ff;
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(154,102,255,0.6);
-      transition: background-color 0.25s ease;
-    }
-    .links a:hover {
-      background-color: #7b5fff;
-    }
-
-  <script>
-    // Example referral data
-    const referredFriends = 5;
-    const instagramBonus = 3;
-    const telegramBonus = 2;
-    const perFriendBonus = 2;
-
-    const totalBonus = (referredFriends * perFriendBonus) + instagramBonus + telegramBonus;
-
-    document.getElementById("referralCount").textContent = `Referred friends: ${referredFriends}`;
-    document.getElementById("totalBonus").textContent = `Total bonus earned: $${totalBonus}`;
-  </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d7427f74c2ddce',t:'MTc1NDkxMDM0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
