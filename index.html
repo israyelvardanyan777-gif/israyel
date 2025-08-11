@@ -1,259 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CryiptoEarn</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-  body {
-    margin: 0; padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #f0f0f5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  /* Navbar */
-  nav {
-    background: rgba(30, 30, 40, 0.85);
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  }
-  nav a {
-    color: #ddd;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 8px 18px;
-    border-radius: 25px;
-    transition: background 0.3s ease;
-  }
-  nav a:hover, nav a.active {
-    background: #6c63ff;
-    color: #fff;
-    box-shadow: 0 0 8px #6c63ffaa;
-  }
-
-  /* Main container */
-  .container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 0.1em;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  }
-  p.subtitle {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    font-size: 1.15rem;
-    letter-spacing: 0.05em;
-  }
-
-  .address-box {
-    background: rgba(255,255,255,0.15);
-    padding: 25px 20px;
-    border-radius: 12px;
-    font-family: 'Courier New', monospace;
-    font-size: 1.4rem;
-    user-select: all;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
-    margin-bottom: 30px;
-    max-width: 400px;
-    word-break: break-all;
-  }
-
-  button.copy-btn {
-    background: #6c63ff;
-    border: none;
-    padding: 14px 35px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 4px 12px #6c63ffaa;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-  }
-  button.copy-btn:hover {
-    background: #5848c2;
-    box-shadow: 0 6px 18px #5848c2cc;
-  }
-
-  .support {
-    margin-top: 50px;
-    font-size: 1rem;
-    color: #dcdcdc;
-  }
-  .support a {
-    color: #ffdd57;
-    text-decoration: none;
-    font-weight: 700;
-  }
-  .support a:hover {
-    text-decoration: underline;
-  }
-
-  /* Content sections hidden by default */
-  .section {
-    display: none;
-  }
-  .section.active {
-    display: block;
-  }
-
-  /* Responsive */
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 2rem;
-    }
-    .address-box {
-      font-size: 1.1rem;
-      padding: 20px 15px;
-    }
-    button.copy-btn {
-      padding: 12px 28px;
-      font-size: 0.9rem;
-    }
-    nav {
-      gap: 15px;
-      padding: 10px 0;
-    }
-    nav a {
-      padding: 6px 12px;
-      font-size: 0.9rem;
-    }
-  }
-</style>
-</head>
-<body>
-
-<nav>
-  <a href="#" class="nav-link active" data-section="wallet">Wallet</a>
-  <a href="#" class="nav-link" data-section="profile">Profile</a>
-  <a href="#" class="nav-link" data-section="referral">Referral</a>
-  <a href="#" class="nav-link" data-section="menu">Menu</a>
-</nav>
-
-<div class="container">
-  <div id="wallet" class="section active">
-    <h1>Wallet</h1>
-    <p class="subtitle">Minimum deposit: <strong>$10</strong></p>
-    <div class="address-box" id="usdt-address">TJu2Dsrv4FA1cV4yUWTzbyFUqxX5hoHkec</div>
-    <button class="copy-btn" onclick="copyAddress()">Copy USDT Address</button>
-    <p class="support">
-      After sending, contact support:<br />
-      <a href="https://t.me/CryiptoEarnOficiall_support" target="_blank">@CryiptoEarnOficiall_support</a>
-    </p>
-  </div>
-
-  <div id="profile" class="section">
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mini App Wallet</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-  </style>
-</head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-
-  <div class="max-w-md w-full bg-white rounded-lg shadow-lg flex flex-col">
-
-    <!-- Header -->
-    <header class="bg-gray-800 text-white p-6 rounded-t-lg flex items-center space-x-4">
-      <div class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center text-xl font-semibold">👤</div>
-      <div>
-        <h1 class="text-lg font-semibold">Armen Vardanyan</h1>
-        <p class="text-gray-300 text-sm">USDT TRC-20 Wallet</p>
-      </div>
-    </header>
-
-    <!-- Balance -->
-    <section class="p-6 flex flex-col items-center border-b border-gray-200">
-      <div class="flex items-center space-x-2 mb-2">
-        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">$</div>
-        <h2 class="text-gray-600 font-medium">Available Balance</h2>
-      </div>
-      <div id="balance" class="text-4xl font-bold text-gray-800">0$</div>
-    </section>
-
-    <!-- Actions -->
-    <section class="p-6">
-      <button id="withdrawBtn" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg font-semibold transition-colors">
-        Withdraw
-      </button>
-    </section>
-
-  </div>
-
-  <!-- Withdraw Modal -->
-  <div id="withdrawModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-lg max-w-sm w-full p-6">
-      <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xl font-semibold text-gray-800">Withdraw USDT</h3>
-        <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">×</button>
-      </div>
-
-      <div class="space-y-4">
-        <div>
-          <label for="recipientAddress" class="block text-gray-700 font-medium mb-2">Recipient Address</label>
-          <input type="text" id="recipientAddress" placeholder="TRC-20 Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" />
-        </div>
-
-        <div>
-          <label for="withdrawAmount" class="block text-gray-700 font-medium mb-2">Amount</label>
-          <div class="relative">
-            <input
-              type="number"
-              id="withdrawAmount"
-              placeholder="0.00"
-              min="100"
-              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent pr-16"
-            />
-            <span class="absolute right-3 top-3 text-gray-500">USDT</span>
-          </div>
-          <p class="text-gray-500 text-sm mt-1">Minimum withdrawal: 100 USDT</p>
-        </div>
-
-        <div class="bg-gray-50 p-4 rounded-lg">
-          <div class="flex justify-between text-sm mb-2">
-            <span class="text-gray-600">Network Fee:</span>
-            <span class="text-gray-800">1.00 USDT</span>
-          </div>
-          <div class="flex justify-between text-sm font-semibold">
-            <span class="text-gray-700">You'll receive:</span>
-            <span id="receiveAmount" class="text-gray-800">0.00 USDT</span>
-          </div>
-        </div>
-
-        <div class="flex space-x-3 pt-4">
-          <button id="cancelBtn" class="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors">
-            Cancel
-          </button>
-          <button id="confirmWithdrawBtn" class="flex-1 py-3 px-4 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors">
-            Withdraw
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 <script>
   // Elements
   const withdrawBtn = document.getElementById('withdrawBtn');
@@ -307,7 +51,7 @@
       return;
     }
     if (isNaN(amount) || amount < minWithdrawal) {
-      alert(`Minimum withdrawal amount is ${minWithdrawal} USDT.`);
+      alert(Minimum withdrawal amount is ${minWithdrawal} USDT.);
       return;
     }
     if (amount + fee > balance) {
@@ -318,7 +62,7 @@
     balance -= (amount + fee);
     balanceElem.textContent = balance.toFixed(2) + ' $';
 
-    alert(`Withdrawal of ${amount.toFixed(2)} USDT to address ${address} initiated.`);
+    alert(Withdrawal of ${amount.toFixed(2)} USDT to address ${address} initiated.);
 
     closeModal();
   });
@@ -441,194 +185,278 @@
     const totalBonus = (referredFriends * perFriendBonus) + instagramBonus + telegramBonus;
 
     // Update the page
-    document.getElementById("referralCount").textContent = `Referred friends: ${referredFriends}`;
-    document.getElementById("totalBonus").textContent = `Total bonus earned: $${totalBonus}`;
+    document.getElementById("referralCount").textContent = Referred friends: ${referredFriends};
+    document.getElementById("totalBonus").textContent = Total bonus earned: $${totalBonus};
   </script>
 </body>
 </html>
   </div>
   <div id="menu" class="section">
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="hy">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ներդրումային Հաշվարկիչ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .card-shadow {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .progress-bar {
-            transition: width 0.5s ease-in-out;
-        }
-    </style>
 </head>
-<body class="gradient-bg min-h-screen py-8 px-4">
-    <div class="max-w-md mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-white mb-2">💰 Ներդրում</h1>
-            <p class="text-white/80">Շահույթ</p>
-        </div>
-
-        <!-- Main Calculator Card -->
-        <div class="bg-white rounded-2xl card-shadow p-6 mb-6">
-            <!-- Input Section -->
-            <div class="space-y-4 mb-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Սկիզբ ($)</label>
-                    <input type="number" id="initialAmount" value="100" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg font-semibold">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Նպատակ ($)</label>
-                    <input type="number" id="targetAmount" value="260" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg font-semibold">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Օրեր</label>
-                    <input type="number" id="days" value="120" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg font-semibold">
-                </div>
-            </div>
-
-            <!-- Calculate Button -->
-            <button onclick="calculateInvestment()" 
-                    class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 transform hover:scale-105">
-                📊 OK
-            </button>
-        </div>
-
-        <!-- Results Card -->
-        <div id="resultsCard" class="bg-white rounded-2xl card-shadow p-6 hidden">
-            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📈</h3>
+<body class="bg-gradient-to-br from-blue-900 to-purple-900 min-h-screen p-4">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 mb-6">
+           <span class="text-gray-800" id="receiveAmount"💰 Ներդրումային Հաշվարկիչ</h1>
             
-            <!-- Key Metrics -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="bg-green-50 rounded-lg p-4 text-center">
-                    <div class="text-2xl font-bold text-green-600" id="dailyReturn">0%</div>
-                    <div class="text-sm text-gray-600">Օրական</div>
-                </div>
-                <div class="bg-blue-50 rounded-lg p-4 text-center">
-                    <div class="text-2xl font-bold text-blue-600" id="totalReturn">0%</div>
-                    <div class="text-sm text-gray-600">Ընդհանուր</div>
-                </div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="mb-6">
-                <div class="w-full bg-gray-200 rounded-full h-3">
-                    <div id="progressBar" class="progress-bar bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full" style="width: 0%"></div>
-                </div>
-            </div>
-
-            <!-- Daily Breakdown -->
-            <div class="bg-gray-50 rounded-lg p-4">
-                <div class="space-y-2 text-sm">
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Սկիզբ:</span>
-                        <span class="font-semibold" id="displayInitial">$100</span>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Input Section -->
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Սկզբնական ավանդ ($)</label>
+                        <input type="number" id="initialDeposit" value="100" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
                     </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Վերջ:</span>
-                        <span class="font-semibold text-green-600" id="displayFinal">$260</span>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Օրական եկամուտ (%)</label>
+                        <input type="number" id="dailyReturn" value="2" step="0.1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
                     </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Շահույթ:</span>
-                        <span class="font-semibold text-green-600" id="displayProfit">$160</span>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Ժամանակահատված (օր)</label>
+                        <input type="number" id="days" value="40" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg">
                     </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-600">Ժամկետ:</span>
-                        <span class="font-semibold" id="displayDays">120 օր</span>
+                    
+                    <button onclick="calculate()" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                        Հաշվարկել
+                    </button>
+                </div>
+                
+                <!-- Results Section -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">📊 Արդյունքներ</h3>
+                    <div id="results" class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                            <span class="text-gray-600">Սկզբնական գումար:</span>
+                            <span class="font-bold text-blue-600" id="startAmount">$100</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                            <span class="text-gray-600">Վերջնական գումար:</span>
+                            <span class="font-bold text-green-600" id="finalAmount">$220.80</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                            <span class="text-gray-600">Ընդհանուր շահույթ:</span>
+                            <span class="font-bold text-purple-600" id="totalProfit">$120.80</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                            <span class="text-gray-600">Շահույթի տոկոս:</span>
+                            <span class="font-bold text-orange-600" id="profitPercent">120.80%</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Quick Presets -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 mt-6">
-            <h4 class="text-white font-semibold mb-3 text-center">⚡</h4>
-            <div class="grid grid-cols-2 gap-2">
-                <button onclick="setPreset(100, 200, 90)" 
-                        class="bg-white/20 text-white px-3 py-2 rounded-lg text-sm hover:bg-white/30 transition-colors">
-                    $100→$200 (90օր)
-                </button>
-                <button onclick="setPreset(100, 260, 120)" 
-                        class="bg-white/20 text-white px-3 py-2 rounded-lg text-sm hover:bg-white/30 transition-colors">
-                    $100→$260 (120օր)
-                </button>
-                <button onclick="setPreset(500, 1000, 180)" 
-                        class="bg-white/20 text-white px-3 py-2 rounded-lg text-sm hover:bg-white/30 transition-colors">
-                    $500→$1000 (180օր)
-                </button>
-                <button onclick="setPreset(1000, 2500, 365)" 
-                        class="bg-white/20 text-white px-3 py-2 rounded-lg text-sm hover:bg-white/30 transition-colors">
-                    $1000→$2500 (365օր)
-                </button>
+        
+        <!-- Daily Breakdown Table -->
+        <div class="bg-white rounded-2xl shadow-2xl p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">📈 Օրական Վիճակագրություն</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-4 py-3 text-left font-semibold text-gray-700">Օր</th>
+                            <th class="px-4 py-3 text-left font-semibold text-gray-700">Սկզբնական գումար</th>
+                            <th class="px-4 py-3 text-left font-semibold text-gray-700">Օրական շահույթ</th>
+                            <th class="px-4 py-3 text-left font-semibold text-gray-700">Վերջնական գումար</th>
+                            <th class="px-4 py-3 text-left font-semibold text-gray-700">Ընդհանուր շահույթ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dailyBreakdown">
+                        <!-- Daily data will be populated here -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
     <script>
-        function calculateInvestment() {
-            const initial = parseFloat(document.getElementById('initialAmount').value);
-            const target = parseFloat(document.getElementById('targetAmount').value);
+        function calculate() {
+            const initialDeposit = parseFloat(document.getElementById('initialDeposit').value);
+            const dailyReturn = parseFloat(document.getElementById('dailyReturn').value) / 100;
             const days = parseInt(document.getElementById('days').value);
-
-            if (!initial || !target || !days || initial <= 0 || target <= initial || days <= 0) {
-                alert('Խնդրում ենք մուտքագրել վավեր տվյալներ');
-                return;
-            }
-
-            // Calculate compound daily interest rate
-            const totalReturn = ((target - initial) / initial) * 100;
-            const dailyMultiplier = Math.pow(target / initial, 1 / days);
-            const dailyReturn = (dailyMultiplier - 1) * 100;
-            const profit = target - initial;
-
-            // Update display
-            document.getElementById('dailyReturn').textContent = dailyReturn.toFixed(2) + '%';
-            document.getElementById('totalReturn').textContent = totalReturn.toFixed(1) + '%';
-            document.getElementById('displayInitial').textContent = '$' + initial.toLocaleString();
-            document.getElementById('displayFinal').textContent = '$' + target.toLocaleString();
-            document.getElementById('displayProfit').textContent = '$' + profit.toLocaleString();
-            document.getElementById('displayDays').textContent = days + ' օր';
-
-            // Animate progress bar
-            const progressPercent = Math.min(100, (target / initial - 1) * 50); // Scale for visual appeal
-            document.getElementById('progressPercent').textContent = totalReturn.toFixed(1) + '%';
             
-            setTimeout(() => {
-                document.getElementById('progressBar').style.width = Math.min(100, totalReturn) + '%';
-            }, 100);
-
-            // Show results
-            document.getElementById('resultsCard').classList.remove('hidden');
-            document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth' });
+            let currentAmount = initialDeposit;
+            const dailyData = [];
+            
+            // Calculate day by day
+            for (let day = 1; day <= days; day++) {
+                const startOfDay = currentAmount;
+                const dailyProfit = currentAmount * dailyReturn;
+                currentAmount += dailyProfit;
+                const totalProfit = currentAmount - initialDeposit;
+                
+                dailyData.push({
+                    day: day,
+                    startAmount: startOfDay,
+                    dailyProfit: dailyProfit,
+                    endAmount: currentAmount,
+                    totalProfit: totalProfit
+                });
+            }
+            
+            // Update results
+            document.getElementById('startAmount').textContent = $${initialDeposit.toFixed(2)};
+            document.getElementById('finalAmount').textContent = $${currentAmount.toFixed(2)};
+            document.getElementById('totalProfit').textContent = $${(currentAmount - initialDeposit).toFixed(2)};
+            document.getElementById('profitPercent').textContent = ${(((currentAmount - initialDeposit) / initialDeposit) * 100).toFixed(2)}%;
+            
+            // Update daily breakdown table
+            const tbody = document.getElementById('dailyBreakdown');
+            tbody.innerHTML = '';
+            
+            dailyData.forEach((data, index) => {
+                const row = document.createElement('tr');
+                row.className = index % 2 === 0 ? 'bg-gray-50' : 'bg-white';
+                row.innerHTML = 
+                    <td class="px-4 py-3 font-medium text-gray-900">${data.day}</td>
+                    <td class="px-4 py-3 text-blue-600">$${data.startAmount.toFixed(2)}</td>
+                    <td class="px-4 py-3 text-green-600">+$${data.dailyProfit.toFixed(2)}</td>
+                    <td class="px-4 py-3 font-semibold text-gray-900">$${data.endAmount.toFixed(2)}</td>
+                    <td class="px-4 py-3 text-purple-600">+$${data.totalProfit.toFixed(2)}</td>
+                ;
+                tbody.appendChild(row);
+            });
         }
-
-        function setPreset(initial, target, days) {
-            document.getElementById('initialAmount').value = initial;
-            document.getElementById('targetAmount').value = target;
-            document.getElementById('days').value = days;
-            calculateInvestment();
-        }
-
-        // Auto-calculate on input change
-        document.getElementById('initialAmount').addEventListener('input', calculateInvestment);
-        document.getElementById('targetAmount').addEventListener('input', calculateInvestment);
-        document.getElementById('days').addEventListener('input', calculateInvestment);
-
-        // Initial calculation
-        calculateInvestment();
+        
+        // Calculate on page load
+        calculate();
+        
+        // Recalculate when inputs change
+        document.getElementById('initialDeposit').addEventListener('input', calculate);
+        document.getElementById('dailyReturn').addEventListener('input', calculate);
+        document.getElementById('days').addEventListener('input', calculate);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d3ccf82543ddce',t:'MTc1NDg3NDA3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d3154ef226ddcf',t:'MTc1NDg2NjU1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+
+</div>
+
+<script>
+  function copyAddress() {
+    const address = document.getElementById('usdt-address').textContent;
+    navigator.clipboard.writeText(address).then(() => {
+      alert('Address copied to clipboard!');
+    }).catch(() => {
+      alert('Copy failed, please copy manually.');
+    });
+  }
+
+  // Nav link click handler - show corresponding section
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = e.target.getAttribute('data-section');
+      // Remove active from all links
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      // Add active to clicked
+      e.target.classList.add('active');
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      // Show target section
+      document.getElementById(target).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
+<script>
+  // Օրինակ օգտատեր ID-ն կարող ես ուղարկել URL կամ Telegram login-ից ստանալ
+  const userId = "123456";
+
+  fetch(http://localhost:5000/api/referral/${userId})
+    .then(response => response.json())
+    .then(data => {
+      if(data.error) {
+        document.getElementById("referralCount").textContent = data.error;
+        document.getElementById("totalBonus").textContent = "";
+        return;
+      }
+      document.getElementById("referralCount").textContent = Referred friends: ${data.referredFriends};
+      document.getElementById("totalBonus").textContent = Total bonus earned: $${data.totalBonus};
+    })
+    .catch(err => {
+      document.getElementById("referralCount").textContent = "Failed to load data.";
+      console.error(err);
+    });
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Referral Bonuses</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #7b5fff, #b75fff);
+      color: #fff;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 380px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 30px 25px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+    h2 {
+      color: #ffd6ff;
+      margin-bottom: 22px;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(123, 95, 255, 0.7);
+    }
+    .bonus-item {
+      font-size: 18px;
+      margin: 14px 0;
+      line-height: 1.4;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .links {
+      margin-top: 30px;
+    }
+    .links a {
+      display: inline-block;
+      margin: 0 14px;
+      padding: 12px 26px;
+      background-color: #9a66ff;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(154,102,255,0.6);
+      transition: background-color 0.25s ease;
+    }
+    .links a:hover {
+      background-color: #7b5fff;
+    }
+
+  <script>
+    // Example referral data
+    const referredFriends = 5;
+    const instagramBonus = 3;
+    const telegramBonus = 2;
+    const perFriendBonus = 2;
+
+    const totalBonus = (referredFriends * perFriendBonus) + instagramBonus + telegramBonus;
+
+    document.getElementById("referralCount").textContent = Referred friends: ${referredFriends};
+    document.getElementById("totalBonus").textContent = Total bonus earned: $${totalBonus};
+  </script>
+</body>
 </html>
