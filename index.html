@@ -1,3 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CryiptoEarn</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #f0f0f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Navbar */
+  nav {
+    background: rgba(30, 30, 40, 0.85);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+  nav a {
+    color: #ddd;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+  }
+  nav a:hover, nav a.active {
+    background: #6c63ff;
+    color: #fff;
+    box-shadow: 0 0 8px #6c63ffaa;
+  }
+
+  /* Main container */
+  .container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0.1em;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  p.subtitle {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+  }
+
+  .address-box {
+    background: rgba(255,255,255,0.15);
+    padding: 25px 20px;
+    border-radius: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    user-select: all;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+    margin-bottom: 30px;
+    max-width: 400px;
+    word-break: break-all;
+  }
+
+  button.copy-btn {
+    background: #6c63ff;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px #6c63ffaa;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  button.copy-btn:hover {
+    background: #5848c2;
+    box-shadow: 0 6px 18px #5848c2cc;
+  }
+
+  .support {
+    margin-top: 50px;
+    font-size: 1rem;
+    color: #dcdcdc;
+  }
+  .support a {
+    color: #ffdd57;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .support a:hover {
+    text-decoration: underline;
+  }
+
+  /* Content sections hidden by default */
+  .section {
+    display: none;
+  }
+  .section.active {
+    display: block;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+    .address-box {
+      font-size: 1.1rem;
+      padding: 20px 15px;
+    }
+    button.copy-btn {
+      padding: 12px 28px;
+      font-size: 0.9rem;
+    }
+    nav {
+      gap: 15px;
+      padding: 10px 0;
+    }
+    nav a {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-link active" data-section="wallet">Wallet</a>
+  <a href="#" class="nav-link" data-section="profile">Profile</a>
+  <a href="#" class="nav-link" data-section="referral">Referral</a>
+  <a href="#" class="nav-link" data-section="menu">Menu</a>
+</nav>
+
+<div class="container">
+  <div id="wallet" class="section active">
+    <h1>Wallet</h1>
+    <p class="subtitle">Minimum deposit: <strong>$10</strong></p>
+    <div class="address-box" id="usdt-address">TJu2Dsrv4FA1cV4yUWTzbyFUqxX5hoHkec</div>
+    <button class="copy-btn" onclick="copyAddress()">Copy USDT Address</button>
+    <p class="support">
+      After sending, contact support:<br />
+      <a href="https://t.me/CryiptoEarnOficiall_support" target="_blank">@CryiptoEarnOficiall_support</a>
+    </p>
+  </div>
+
+  <div id="profile" class="section">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini App Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+  <div class="max-w-md w-full bg-white rounded-lg shadow-lg flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white p-6 rounded-t-lg flex items-center space-x-4">
+      <div class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center text-xl font-semibold">👤</div>
+      <div>
+        <h1 class="text-lg font-semibold">Armen Vardanyan</h1>
+        <p class="text-gray-300 text-sm">USDT TRC-20 Wallet</p>
+      </div>
+    </header>
+
+    <!-- Balance -->
+    <section class="p-6 flex flex-col items-center border-b border-gray-200">
+      <div class="flex items-center space-x-2 mb-2">
+        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">$</div>
+        <h2 class="text-gray-600 font-medium">Available Balance</h2>
+      </div>
+      <div id="balance" class="text-4xl font-bold text-gray-800">500.00 $</div>
+    </section>
+
+    <!-- Actions -->
+    <section class="p-6">
+      <button id="withdrawBtn" class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg font-semibold transition-colors">
+        Withdraw
+      </button>
+    </section>
+
+  </div>
+
+  <!-- Withdraw Modal -->
+  <div id="withdrawModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg max-w-sm w-full p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-semibold text-gray-800">Withdraw USDT</h3>
+        <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600 text-2xl font-bold">×</button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label for="recipientAddress" class="block text-gray-700 font-medium mb-2">Recipient Address</label>
+          <input type="text" id="recipientAddress" placeholder="TRC-20 Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent" />
+        </div>
+
+        <div>
+          <label for="withdrawAmount" class="block text-gray-700 font-medium mb-2">Amount</label>
+          <div class="relative">
+            <input
+              type="number"
+              id="withdrawAmount"
+              placeholder="0.00"
+              min="100"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent pr-16"
+            />
+            <span class="absolute right-3 top-3 text-gray-500">USDT</span>
+          </div>
+          <p class="text-gray-500 text-sm mt-1">Minimum withdrawal: 100 USDT</p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <div class="flex justify-between text-sm mb-2">
+            <span class="text-gray-600">Network Fee:</span>
+            <span class="text-gray-800">1.00 USDT</span>
+          </div>
+          <div class="flex justify-between text-sm font-semibold">
+            <span class="text-gray-700">You'll receive:</span>
+            <span id="receiveAmount" class="text-gray-800">0.00 USDT</span>
+          </div>
+        </div>
+
+        <div class="flex space-x-3 pt-4">
+          <button id="cancelBtn" class="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors">
+            Cancel
+          </button>
+          <button id="confirmWithdrawBtn" class="flex-1 py-3 px-4 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors">
+            Withdraw
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
   // Elements
   const withdrawBtn = document.getElementById('withdrawBtn');
@@ -51,7 +307,7 @@
       return;
     }
     if (isNaN(amount) || amount < minWithdrawal) {
-      alert(Minimum withdrawal amount is ${minWithdrawal} USDT.);
+      alert(`Minimum withdrawal amount is ${minWithdrawal} USDT.`);
       return;
     }
     if (amount + fee > balance) {
@@ -62,7 +318,7 @@
     balance -= (amount + fee);
     balanceElem.textContent = balance.toFixed(2) + ' $';
 
-    alert(Withdrawal of ${amount.toFixed(2)} USDT to address ${address} initiated.);
+    alert(`Withdrawal of ${amount.toFixed(2)} USDT to address ${address} initiated.`);
 
     closeModal();
   });
@@ -185,8 +441,8 @@
     const totalBonus = (referredFriends * perFriendBonus) + instagramBonus + telegramBonus;
 
     // Update the page
-    document.getElementById("referralCount").textContent = Referred friends: ${referredFriends};
-    document.getElementById("totalBonus").textContent = Total bonus earned: $${totalBonus};
+    document.getElementById("referralCount").textContent = `Referred friends: ${referredFriends}`;
+    document.getElementById("totalBonus").textContent = `Total bonus earned: $${totalBonus}`;
   </script>
 </body>
 </html>
@@ -301,10 +557,10 @@
             }
             
             // Update results
-            document.getElementById('startAmount').textContent = $${initialDeposit.toFixed(2)};
-            document.getElementById('finalAmount').textContent = $${currentAmount.toFixed(2)};
-            document.getElementById('totalProfit').textContent = $${(currentAmount - initialDeposit).toFixed(2)};
-            document.getElementById('profitPercent').textContent = ${(((currentAmount - initialDeposit) / initialDeposit) * 100).toFixed(2)}%;
+            document.getElementById('startAmount').textContent = `$${initialDeposit.toFixed(2)}`;
+            document.getElementById('finalAmount').textContent = `$${currentAmount.toFixed(2)}`;
+            document.getElementById('totalProfit').textContent = `$${(currentAmount - initialDeposit).toFixed(2)}`;
+            document.getElementById('profitPercent').textContent = `${(((currentAmount - initialDeposit) / initialDeposit) * 100).toFixed(2)}%`;
             
             // Update daily breakdown table
             const tbody = document.getElementById('dailyBreakdown');
@@ -313,13 +569,13 @@
             dailyData.forEach((data, index) => {
                 const row = document.createElement('tr');
                 row.className = index % 2 === 0 ? 'bg-gray-50' : 'bg-white';
-                row.innerHTML = 
+                row.innerHTML = `
                     <td class="px-4 py-3 font-medium text-gray-900">${data.day}</td>
                     <td class="px-4 py-3 text-blue-600">$${data.startAmount.toFixed(2)}</td>
                     <td class="px-4 py-3 text-green-600">+$${data.dailyProfit.toFixed(2)}</td>
                     <td class="px-4 py-3 font-semibold text-gray-900">$${data.endAmount.toFixed(2)}</td>
                     <td class="px-4 py-3 text-purple-600">+$${data.totalProfit.toFixed(2)}</td>
-                ;
+                `;
                 tbody.appendChild(row);
             });
         }
@@ -371,7 +627,7 @@
   // Օրինակ օգտատեր ID-ն կարող ես ուղարկել URL կամ Telegram login-ից ստանալ
   const userId = "123456";
 
-  fetch(http://localhost:5000/api/referral/${userId})
+  fetch(`http://localhost:5000/api/referral/${userId}`)
     .then(response => response.json())
     .then(data => {
       if(data.error) {
@@ -379,8 +635,8 @@
         document.getElementById("totalBonus").textContent = "";
         return;
       }
-      document.getElementById("referralCount").textContent = Referred friends: ${data.referredFriends};
-      document.getElementById("totalBonus").textContent = Total bonus earned: $${data.totalBonus};
+      document.getElementById("referralCount").textContent = `Referred friends: ${data.referredFriends}`;
+      document.getElementById("totalBonus").textContent = `Total bonus earned: $${data.totalBonus}`;
     })
     .catch(err => {
       document.getElementById("referralCount").textContent = "Failed to load data.";
@@ -455,8 +711,8 @@
 
     const totalBonus = (referredFriends * perFriendBonus) + instagramBonus + telegramBonus;
 
-    document.getElementById("referralCount").textContent = Referred friends: ${referredFriends};
-    document.getElementById("totalBonus").textContent = Total bonus earned: $${totalBonus};
+    document.getElementById("referralCount").textContent = `Referred friends: ${referredFriends}`;
+    document.getElementById("totalBonus").textContent = `Total bonus earned: $${totalBonus}`;
   </script>
 </body>
 </html>
